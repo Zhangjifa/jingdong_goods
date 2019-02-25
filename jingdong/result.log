@@ -1,0 +1,1501 @@
+Pipelines初始化
+连接mongodb
+数据解析
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 128GSSD+1T 2G独显 '
+         'FHD）银',
+ 'price': '6799.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NjA5Lmh0bWw&log=poEXzlRG7VoHuy_ZZWly0pCR1jX6S3Gikr0m-0lLeEK5akrHgVnz9BrtCxTbEDx1hgz4DRQuwZyU7qeUXeWDRKLPEWTvjQ4NVcu-5w18KN4F0Nc_6Loq4cdITIC4_Bl2KfMVrUNMjzy0-401Pxe_zQ1NHUCysK0Ld9FBusj6fE4_l8mAG2Pq4KgGZV-i8VTRw3Rdj70iLsULIWpyih5oBMM0dJzdASxcJkm1ByWKGjxKhHzDaIgYQ0DtibUIy1fosAePXgg_8w0qWO7ULXtl98RVTF_BgCuabWYX4wtjPmYdBgAU49x641-6tcR7RdU7lyTmLCY7WBOtFyx8W7JCEWYDRV7MBIvRa8WuFmsF4ehZJZ7raZUJHtfhsUAu8vc0hJopCOfhLg2Qb48Z6kHOCUYVwl3ttFOLh3MxGPZfrO8pVhCNwXDyGIs6JkaRBTezqRVS7Nkv3rDCvB8bjB1fe5uvb5dCz1KvODNjtENK398&v=404'}
+{'comments': '11万+',
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 256G FHD IPS 正版Office）冰河银',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/7512626.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)扬天M5200k 商用办公台式电脑整机（AMD A6-8570 4G 500G 集成 WIN10 '
+         '四年上门）19.5英寸',
+ 'price': '2488.00',
+ 'url': 'https://item.jd.com/7172418.html'}
+{'comments': '11万+',
+ 'name': 'Apple MacBook Air 13.3英寸笔记本电脑 银色(2017款Core i5 处理器/8GB内存/128GB闪存 '
+         'MQD32CH/A)',
+ 'price': '6488.00',
+ 'url': 'https://item.jd.com/5225346.html'}
+{'comments': '500+',
+ 'name': '联想扬天商务本v310-15超薄本商务办公本娱乐便携家用影音学生双核笔记本电脑采购英特尔N4000 标配：4G内存+500G大硬盘 集显 '
+         '15.6英寸 银灰色 正版win10',
+ 'price': '2319.00',
+ 'url': 'https://item.jd.com/32457565496.html'}
+{'comments': '1900+',
+ 'name': '宏硕 酷睿i5-8400/I7四核 /送显示器/GTX1060独显/吃鸡游戏台式机DIY组装电脑主机 电脑整机 套餐二 '
+         '酷睿i7/16G/GTX1060独显',
+ 'price': '3599.00',
+ 'url': 'https://item.jd.com/32972768194.html'}
+{'comments': '6.9万+',
+ 'name': 'Apple MacBook Pro 13.3英寸笔记本电脑 银色 2018新款（四核八代i5 8G 256G固态硬盘 '
+         'MR9U2CH/A）',
+ 'price': '12588.00',
+ 'url': 'https://item.jd.com/7629508.html'}
+{'comments': '4.8万+',
+ 'name': '联想ThinkPad E480（2XCD）14英寸轻薄窄边框笔记本电脑（i3-7020U 4G 500G FHD Win10）银',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/8596169.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（04CD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256SSD '
+         'Office）冰原银',
+ 'price': '5099.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NTgzLmh0bWw&log=poEXzlRG7VoHuy_ZZWly0pCR1jX6S3Gikr0m-0lLeEJxydva7LzZveXB01dhrVR_ifGVSPEbVNC4jvrAUf37AZ-cGqbBh5jM7vrMVdJbBmX7igmUy2LX9fWTfVcDtXGQlUtnH-q0rYzhWowFrD0aHDm2wd8RuTfrMzFuRhedxawTcCkTBDEphShxVO93zEL2Ub3eQXu1CT8Yexg26b8px3fMx1MSFON67omuTLI0qtwNr9r1gM0VwczFXFvy6v9Eg2KcqxFCTJm2dlBIUA-n_of2WO2JEncvJ1D4nuJrgqnNgT26T2-ScIxHShXbjXg2WifJUZV2mn7F1650tPLtmOPK_p_87yg769hchKicK15nuTKSlRTCNeA9DMI_RVbntXa7A3SRThZdh74g_9a7Zioj9WR6EbdP2_Tg3yWCs_Q7YAMA9RWtxi-9G-j8oAkNXvJpBB-cQkZIXCx5Mn5PRVd2a-ZK3uPnFAxAnvTlK5o&v=404'}
+{'comments': '5.7万+',
+ 'name': '戴尔DELL灵越飞匣14.0英寸便携笔记本电脑(i5-7200U 4G 500G R520 2G独显 Win10)黑',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/100000011363.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（0VCD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 128GSSD+500G '
+         '2G独显）',
+ 'price': '5499.00',
+ 'url': 'https://item.jd.com/6072622.html'}
+{'comments': '2900+',
+ 'name': '华为（HUAWEI） 荣耀笔记本MagicBook 14英寸轻薄便携学生本办公商务超薄本超极本电脑 '
+         '锐龙版AMD+8G+256G集显（冰河银）',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/31204952898.html'}
+{'comments': '4700+',
+ 'name': '天宝（T-bao） R8 15.6英寸超薄游戏笔记本电脑 便携商务办公轻薄本 全高清窄边框学生超极本 银色 6G内存128G固态硬盘 '
+         'N3450 四核CPU',
+ 'price': '1288.00',
+ 'url': 'https://item.jd.com/17928948059.html'}
+{'comments': '4600+',
+ 'name': '华硕（ASUS）顽石超薄本A480 酷睿i3轻薄家用影音学生固态独显超极本商务办公手提游戏笔记本电脑 '
+         'i3-7100U/8G/500G+128G固态',
+ 'price': '3699.00',
+ 'url': 'https://item.jd.com/20164371186.html'}
+{'comments': '400+',
+ 'name': '壹号本（ONEMIX2S）碟中谍联名限量款 酷睿8100Y 7英寸口袋笔记本电脑平板电脑二合一预售 黑色',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/35175058740.html'}
+{'comments': '2.5万+',
+ 'name': '联想（Lenovo）扬天M5300k商用办公台式电脑整机（AMD A10-8770 4G 1T 集成  win10 '
+         '4年上门服务）19.5英寸',
+ 'price': '2888.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82ODYzNjY4Lmh0bWw&log=poEXzlRG7VoHuy_ZZWly0pCR1jX6S3Gikr0m-0lLeEJO1h_Cfr6TdN6zw_SR53Jj3riFYv6VXATVTJd9pwu2gsK-ndSBeANZye3W9saIbXwpHWe9WUxQR1SKGKLAAwYoBHkfgDCBpBqNUyh07ln8-l9_U3KKjAatUqnEWWIGLhgqIrxM6vocfYIcDbOEkGB3NcDivRY9S23eFqFzLks_eCSPLE9HEG6xk9oLPDYdFfGiRMjCGBkGzW_wCCazdDStTPJVp1Q8yKzcn5OlrVHHxsqnzqTX_MCA6pFDUrcOLZu6ibkjF2K1ncP0iU6mseJEvQ2-YnkE2L3P2j3jDqcWJCRFYSXIq-igxhks-f7VC5gvHR_lRHLe7utKDnXX-4lmJkNVy2x5dQEq73iBImGvlihE8gSItlv9QJ35nF4nzj75euDPbmqRlWM_elwRs1ZcDK9V0V-CleZC4F1y7VfeYKgwyba6Ve0Ym9C7AndsX54&v=404'}
+{'comments': '1800+',
+ 'name': '宏碁（acer） 官方旗舰店A315轻薄便携学生商务办公宏基笔记本电脑15.6英寸游戏本手提2G独显 2G独显 标 '
+         '配：A4/4G/128G固态',
+ 'price': '2699.00',
+ 'url': 'https://item.jd.com/27377066587.html'}
+{'comments': '2.9万+',
+ 'name': '联想IdeaPad330-15新一代酷睿I3超性能手提笔记本电脑超薄本游戏轻薄本办公商用本学生本 新一代酷睿i3/4G/128G/定制 '
+         'W10 银色 15.6英寸[送正版office]',
+ 'price': '2899.00',
+ 'url': 'https://item.jd.com/26395831445.html'}
+{'comments': '14万+',
+ 'name': '小米(MI)Air 13.3英寸全金属超轻薄笔记本电脑(i5-8250U 8G 256G PCIE SSD MX150 2G独显 '
+         '72%NTSC FHD 预装Office 指纹版)银',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/7269871.html'}
+{'comments': '7400+',
+ 'name': '得峰（Deffad）A3 14英寸窄边框四核低功耗 超极轻薄办公笔记本电脑 娱乐游戏 银色-四核 '
+         '四核X5-Z8350/4G内存64G存储',
+ 'price': '978.00',
+ 'url': 'https://item.jd.com/1298930257.html'}
+{'comments': '2.4万+',
+ 'name': '联想IdeaPad330c-15八代酷睿I5/I7性能游戏笔记本电脑 轻薄本超薄本商务办公本手提电脑 '
+         '标配[I7-8550U/4G/1TB/2G独显] 小新潮5000升级 新款黑色[送正版office',
+ 'price': '4699.00',
+ 'url': 'https://item.jd.com/26498549640.html'}
+{'comments': '2.1万+',
+ 'name': '惠普（HP）EliteBook 745G5 14英寸轻薄笔记本电脑（锐龙5 PRO 2500U 8G 256SSD Win10 FHD '
+         'Office一年上门）',
+ 'price': '4799.00',
+ 'url': 'https://item.jd.com/7588521.html'}
+{'comments': '8700+',
+ 'name': '联想ThinkPad E485（01CD）14英寸笔记本电脑（锐龙5-2500U 8G双通道 256GSSD FHD Win10）黑色',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/100000060090.html'}
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256GSSD 2G独显 FHD '
+         'IPS屏）银',
+ 'price': '5499.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDcyNjE0Lmh0bWw&log=poEXzlRG7VoHuy_ZZWly0pCR1jX6S3Gikr0m-0lLeEKfijWMGiwNX4WNBGZZGPlEtymHM1D15_aTsSC9Mt-L_VWl2a85zvK4nScBObpOdsKNRswJ5vroaSJL3ZjyLwZz5QY99qTwUS9AlP4UfiQaMtDQjASTCUp5o35GRoqF0OjXuKrHCz8k_7sZgDDOzVnHWiZS3KGsl_uVkRbmRvpwFu5SkyAq6IbTiXUzGnwEZdl39PVBOOMnIWYeWsqbQfBFCTRiqICxgBTCOghoeQSJ3Cf1d5mdjZ7ukfrewY1CYP85Zb8xt0HIDzDDj1i67i2JLy1HNS3qHUMS5BXq8J4ipHb_R6ihzyXQVpMSsYMahvCkMDeFehjjYTxjF6b9WAX1XLstB3CLz9IEB_ULoUEdInvn1wpUaKgy5VBZZu1CvdiNLNDR1gr-q47HrVC46w9f7J71fAb4eEG8KvvJBdORV5UZZLfdNxjpLeeS1h3PpcA&v=404'}
+{'comments': '8万+',
+ 'name': '戴尔(DELL)成就3470高性能商用办公台式电脑整机(八代i5-8400 8G 1T 四年上门售后 键鼠 WIFI 蓝牙)21.5英寸',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/7108222.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSDPCIe '
+         'MX150)轻奢灰',
+ 'price': '4998.00',
+ 'url': 'https://item.jd.com/100000863175.html'}
+{'comments': '5.4万+',
+ 'name': '武极 i7 8700/华硕GTX1060-6G/240G 游戏台式吃鸡电脑主机/DIY组装机',
+ 'price': '4996.00',
+ 'url': 'https://item.jd.com/1555771170.html'}
+{'comments': '13万+',
+ 'name': '联想(Lenovo)小新潮7000 14英寸轻薄笔记本电脑(I5-8250U 8G 256G PCI-E SSD UMA '
+         '正版Office)银',
+ 'price': '4599.00',
+ 'url': 'https://item.jd.com/100000117782.html'}
+数据解析
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 128GSSD+1T 2G独显 '
+         'FHD）银',
+ 'price': '6799.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NjA5Lmh0bWw&log=JnNEpXkIvEmLlzbTglVNx9MgVmpVU1gMug0dum3asgSZz5i6doBA71z4lYbxbg35BAkZlFndqdKYdnxA2FyfzXEgpwurpzh8Duz-JuJ4XBr_UxXTO77qs4HPJQsNDtIOee1E5WffhJ2Qt97e2Kk43Ur4p5TZYL99z2IQik0en8UhI2wktbWCUda5ovvmb7eWgXHxVfJ0ZfBPZOg7jCm-XmLNadvv8mukpilt1-t85rDm86zsuZoJWdTNi8F9ERzvM26AeuEjBmPHfPSJBkp67UwvxfuBJnQvHCBYQpmk2sFthUJQkRwckD7qZ8WU76XU65Ncv1laxRRlx3Mtg5PXGsLyc4jF-lKuNL5hLCLYCZ9YFOX7rP3OzGiOelvDSMghuGpYUhPc6N_S6L-_feOe8IN6fP_CvAxULNfwJHHouDXpCVMcDKBcT5r1dq3CuaFF9wN-K73pFyX2zo5h1GzosOLVm3KBubpnJCS-u7J0y_OLs1xqMz91Z9w1seRExT1mp4gBDb--nhykjO3DhOb2zA&v=404'}
+{'comments': '11万+',
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 256G FHD IPS 正版Office）冰河银',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/7512626.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)扬天M5200k 商用办公台式电脑整机（AMD A6-8570 4G 500G 集成 WIN10 '
+         '四年上门）19.5英寸',
+ 'price': '2488.00',
+ 'url': 'https://item.jd.com/7172418.html'}
+{'comments': '11万+',
+ 'name': 'Apple MacBook Air 13.3英寸笔记本电脑 银色(2017款Core i5 处理器/8GB内存/128GB闪存 '
+         'MQD32CH/A)',
+ 'price': '6488.00',
+ 'url': 'https://item.jd.com/5225346.html'}
+{'comments': '500+',
+ 'name': '联想扬天商务本v310-15超薄本商务办公本娱乐便携家用影音学生双核笔记本电脑采购英特尔N4000 标配：4G内存+500G大硬盘 集显 '
+         '15.6英寸 银灰色 正版win10',
+ 'price': '2319.00',
+ 'url': 'https://item.jd.com/32457565496.html'}
+{'comments': '1900+',
+ 'name': '宏硕 酷睿i5-8400/I7四核 /送显示器/GTX1060独显/吃鸡游戏台式机DIY组装电脑主机 电脑整机 套餐二 '
+         '酷睿i7/16G/GTX1060独显',
+ 'price': '3599.00',
+ 'url': 'https://item.jd.com/32972768194.html'}
+{'comments': '6.9万+',
+ 'name': 'Apple MacBook Pro 13.3英寸笔记本电脑 银色 2018新款（四核八代i5 8G 256G固态硬盘 '
+         'MR9U2CH/A）',
+ 'price': '12588.00',
+ 'url': 'https://item.jd.com/7629508.html'}
+{'comments': '4.8万+',
+ 'name': '联想ThinkPad E480（2XCD）14英寸轻薄窄边框笔记本电脑（i3-7020U 4G 500G FHD Win10）银',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/8596169.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSD PCIe MX150 '
+         ')复古金',
+ 'price': '5299.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDEwNDU1MTQuaHRtbA&log=JnNEpXkIvEmLlzbTglVNx9MgVmpVU1gMug0dum3asgSwoO1GtvO57ASZ9_nhwVNDQbRsGJ3sBhhntJHl1uFFLjCokir6M8-Gaa1LuT6b0jTvmwtrAPhigXS8RIShoW-oTFF7PUKvF7E9VASlbX4JDD2Hbi3-jhkpenf0KQEhXuvqxCoo3G6M9jHN6DfINJkT_4J2USSVrZeK-BsqmyBUqVudsX2uQz6FfvSN39qUWFEaLbe4PWgMuqaKRMxWXImDozOpEdSWYVSZOT5bsgfmw9jZ9WYO8HiY6jIJ3QJymvKDZecNCPE4xOs3oIaKqsZN8OHW0neBRm7gKAM2Z-j1L80FmLZweFfC255VZ55tM4Y87QKu7eYuIIxPDnJUe_J3fV2P-M19fggIJ7yf9abk5lLI4p8GUaATV4FGA4XY_ecrRu-hmMpZqV4qXUOsx-u97sWf-J6LcLQVg8dSRMAgkazc8M1LQHwHqBJuPJf6i6AMR1dtdfzqipmQEkZitOLd53tMDFpuL1J66muis00txw&v=404'}
+{'comments': '5.7万+',
+ 'name': '戴尔DELL灵越飞匣14.0英寸便携笔记本电脑(i5-7200U 4G 500G R520 2G独显 Win10)黑',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/100000011363.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（0VCD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 128GSSD+500G '
+         '2G独显）',
+ 'price': '5499.00',
+ 'url': 'https://item.jd.com/6072622.html'}
+{'comments': '2900+',
+ 'name': '华为（HUAWEI） 荣耀笔记本MagicBook 14英寸轻薄便携学生本办公商务超薄本超极本电脑 '
+         '锐龙版AMD+8G+256G集显（冰河银）',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/31204952898.html'}
+{'comments': '4700+',
+ 'name': '天宝（T-bao） R8 15.6英寸超薄游戏笔记本电脑 便携商务办公轻薄本 全高清窄边框学生超极本 银色 6G内存128G固态硬盘 '
+         'N3450 四核CPU',
+ 'price': '1288.00',
+ 'url': 'https://item.jd.com/17928948059.html'}
+{'comments': '4600+',
+ 'name': '华硕（ASUS）顽石超薄本A480 酷睿i3轻薄家用影音学生固态独显超极本商务办公手提游戏笔记本电脑 '
+         'i3-7100U/8G/500G+128G固态',
+ 'price': '3699.00',
+ 'url': 'https://item.jd.com/20164371186.html'}
+{'comments': '400+',
+ 'name': '壹号本（ONEMIX2S）碟中谍联名限量款 酷睿8100Y 7英寸口袋笔记本电脑平板电脑二合一预售 黑色',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/35175058740.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（04CD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256SSD '
+         'Office）冰原银',
+ 'price': '5099.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NTgzLmh0bWw&log=JnNEpXkIvEmLlzbTglVNx9MgVmpVU1gMug0dum3asgSkRXUxEGMPQOD9v2iolp5_o_u--LlIJm9bHVukUgPFQ9ovZ4_66zVyb7lsn8GQ66KRJ-LNtFLAviYiZPTm901UWGa9Yrit7IKSpaioazyNnkvUxItlW3htHKHo-8jse0R47cHvUcggCCakpXhRXt4yCsY3DMBchM3uA19hhsq4dwC6LZ14KOiwpfq1Z8UZfOlxEUa19HC7O7t4u7X5z5ubSDBkU2NUk5f7ILhAE-nxdoZ9bb9wKnTdOdKjq_7l3CXLT2sd4_xni9MoP2pLhsF1tU3Hkp5QiaYtAi0klouuY5s8fwsRpYEJiI_YQoW2UmBExZ70MMPOvuVE8EaOnKOBwH8a8oRMcf2XUbcoSsigjhm-hyWOUHritPN61PC1WX_xwtapc4p0dVpidEYxQJ1TFvkzLoa85P8sn4-w6-uSCnEgRgvy-L8Hr-QnHUwkV6ldqnhmbQaeUCDvQ1zd1NWh3xv_rEwiPEEJlXD3_W9Wqg&v=404'}
+{'comments': '1800+',
+ 'name': '宏碁（acer） 官方旗舰店A315轻薄便携学生商务办公宏基笔记本电脑15.6英寸游戏本手提2G独显 2G独显 标 '
+         '配：A4/4G/128G固态',
+ 'price': '2699.00',
+ 'url': 'https://item.jd.com/27377066587.html'}
+{'comments': '2.9万+',
+ 'name': '联想IdeaPad330-15新一代酷睿I3超性能手提笔记本电脑超薄本游戏轻薄本办公商用本学生本 新一代酷睿i3/4G/128G/定制 '
+         'W10 银色 15.6英寸[送正版office]',
+ 'price': '2899.00',
+ 'url': 'https://item.jd.com/26395831445.html'}
+{'comments': '14万+',
+ 'name': '小米(MI)Air 13.3英寸全金属超轻薄笔记本电脑(i5-8250U 8G 256G PCIE SSD MX150 2G独显 '
+         '72%NTSC FHD 预装Office 指纹版)银',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/7269871.html'}
+{'comments': '7400+',
+ 'name': '得峰（Deffad）A3 14英寸窄边框四核低功耗 超极轻薄办公笔记本电脑 娱乐游戏 银色-四核 '
+         '四核X5-Z8350/4G内存64G存储',
+ 'price': '978.00',
+ 'url': 'https://item.jd.com/1298930257.html'}
+{'comments': '2.4万+',
+ 'name': '联想IdeaPad330c-15八代酷睿I5/I7性能游戏笔记本电脑 轻薄本超薄本商务办公本手提电脑 '
+         '标配[I7-8550U/4G/1TB/2G独显] 小新潮5000升级 新款黑色[送正版office',
+ 'price': '4699.00',
+ 'url': 'https://item.jd.com/26498549640.html'}
+{'comments': '2.1万+',
+ 'name': '惠普（HP）EliteBook 745G5 14英寸轻薄笔记本电脑（锐龙5 PRO 2500U 8G 256SSD Win10 FHD '
+         'Office一年上门）',
+ 'price': '4799.00',
+ 'url': 'https://item.jd.com/7588521.html'}
+{'comments': '8700+',
+ 'name': '联想ThinkPad E485（01CD）14英寸笔记本电脑（锐龙5-2500U 8G双通道 256GSSD FHD Win10）黑色',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/100000060090.html'}
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480（40CD）英特尔8代酷睿14英寸轻薄笔记本电脑（i5-8250U 8G 512GSSD 2G独显 '
+         'FHD）冰原银',
+ 'price': '6499.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDA1NDM4MzguaHRtbA&log=JnNEpXkIvEmLlzbTglVNx9MgVmpVU1gMug0dum3asgQJEyYf2QH1rrKcWvn_yyw2I3UceCZCoygX9moQVDey9A8ljFgMNFutpmxSycCP2telenfHUYe2lD9TGazqOoTdYd5CUQi7QXPA_PCirPIxTr5LNF_jpXkZ7IEjgLKqzl4K2ACz1aasEd-PbXnNWCuM0p9vRn3VL4QGDxZHVp9Qi_fGHrCFBA9tpG0LW6y314iOj6OQ8R2cJElV0r4MTvzBqwRSiiukfsX0qW1FeihJQmBQXZxJPS3dJxZ8yTgPQvRO-X6PVKgnPj5KtrN1BS_H-DM-dvlqHVt1-wOVcfMTmBOWrOeF5UgUZiWrQR3ozfkYF5-IWdo6gHY5HUb-JW6CsUcmvucoWh5G2EoKUFJK40daoqyoQGbxCh_AfaknF1S7khzZVaZ2hH8MiAixnwUS7ea6bmHT87QDZJVVaIOYqOX7dI-19WJWzfws654x8hVAFc_-j_pRqRL1A0w5AAQBFrXiQBl8FMc3Oje4OcLeAQ&v=404'}
+{'comments': '8万+',
+ 'name': '戴尔(DELL)成就3470高性能商用办公台式电脑整机(八代i5-8400 8G 1T 四年上门售后 键鼠 WIFI 蓝牙)21.5英寸',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/7108222.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSDPCIe '
+         'MX150)轻奢灰',
+ 'price': '4998.00',
+ 'url': 'https://item.jd.com/100000863175.html'}
+{'comments': '5.4万+',
+ 'name': '武极 i7 8700/华硕GTX1060-6G/240G 游戏台式吃鸡电脑主机/DIY组装机',
+ 'price': '4996.00',
+ 'url': 'https://item.jd.com/1555771170.html'}
+{'comments': '13万+',
+ 'name': '联想(Lenovo)小新潮7000 14英寸轻薄笔记本电脑(I5-8250U 8G 256G PCI-E SSD UMA '
+         '正版Office)银',
+ 'price': '4599.00',
+ 'url': 'https://item.jd.com/100000117782.html'}
+数据解析
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 128GSSD+1T 2G独显 '
+         'FHD）银',
+ 'price': '6799.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NjA5Lmh0bWw&log=5s5M0_ivhTUNWCftXZwdaqtI4CglTYL_yTlnEcrvSF7VQE4oOM-irgyeWbEXQwEP88wjfP5CtKrv0GLkxwf0Ngd_vXHlVlfhypZ4WWcxYDj7SNcTWYadaDwCZbxUUrtM9NT12VT_CmSigom7xBkxX33eFB7UxQUxeIMgUtRXau1l0SIDb-naC5ljBf9u9U9HNqhcLjZNOE6ZxAcKCOiEF8VdLb6nmdnBIGBfIebCLi-nakRYZd4yeypnL31yhNLGHMgmMO82sNRMGfnHvx2t71EcrjT9u6oy3S2Sh7hTLcd7yuHk-BBITjZ7Sba-WiNCywrSObTttb_9FYUqDh18pb7QVaoSW0ol23zTJ1S6LFAFtyR3bm2R2utQr8cMLWXLAm_nGNeHK6bLcmQVp_11kFLbb1-J-3eH2k1-1bi3JMnuZeJ-5BsKLAhDsD_A6QoKI_8Jv5SQFm_XSobDuIdDmkSIcvp_CKRw2HR6QWNGMPqqyqL454XbxlpG3xTfAa6QKeyX2sHEDtYV6UZL5Q6nSQ&v=404'}
+{'comments': '11万+',
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 256G FHD IPS 正版Office）冰河银',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/7512626.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)扬天M5200k 商用办公台式电脑整机（AMD A6-8570 4G 500G 集成 WIN10 '
+         '四年上门）19.5英寸',
+ 'price': '2488.00',
+ 'url': 'https://item.jd.com/7172418.html'}
+{'comments': '11万+',
+ 'name': 'Apple MacBook Air 13.3英寸笔记本电脑 银色(2017款Core i5 处理器/8GB内存/128GB闪存 '
+         'MQD32CH/A)',
+ 'price': '6488.00',
+ 'url': 'https://item.jd.com/5225346.html'}
+{'comments': '500+',
+ 'name': '联想扬天商务本v310-15超薄本商务办公本娱乐便携家用影音学生双核笔记本电脑采购英特尔N4000 标配：4G内存+500G大硬盘 集显 '
+         '15.6英寸 银灰色 正版win10',
+ 'price': '2319.00',
+ 'url': 'https://item.jd.com/32457565496.html'}
+{'comments': '1900+',
+ 'name': '宏硕 酷睿i5-8400/I7四核 /送显示器/GTX1060独显/吃鸡游戏台式机DIY组装电脑主机 电脑整机 套餐二 '
+         '酷睿i7/16G/GTX1060独显',
+ 'price': '3599.00',
+ 'url': 'https://item.jd.com/32972768194.html'}
+{'comments': '6.9万+',
+ 'name': 'Apple MacBook Pro 13.3英寸笔记本电脑 银色 2018新款（四核八代i5 8G 256G固态硬盘 '
+         'MR9U2CH/A）',
+ 'price': '12588.00',
+ 'url': 'https://item.jd.com/7629508.html'}
+{'comments': '4.8万+',
+ 'name': '联想ThinkPad E480（2XCD）14英寸轻薄窄边框笔记本电脑（i3-7020U 4G 500G FHD Win10）银',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/8596169.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSD PCIe MX150 '
+         ')复古金',
+ 'price': '5299.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDEwNDU1MTQuaHRtbA&log=5s5M0_ivhTUNWCftXZwdaqtI4CglTYL_yTlnEcrvSF4f6ZdYfPinCntu3J5U_iF_p7_SJX3F_zZmUauUaZYFKD-GiwZ_02i_X-0rUfRltJIVBJbLrShzi817_ZSn6o96OvbgTYEeMIwZxqSz4oXSKP7c-vrz_H7h4Vy-SSGIp_jTdT5hBUUlQLcbQwO9vHJTR6IZeEzDAfufv9Hx1q2vzetWBm03uinr9YutExSyqroxW0YQ3qB7tMWddm3IIhzRGCBKn4xskiTLRZvabmc3aTn-u6K21HaV3fBP_Ss9Sbg-W9jNynTc0z_Gl_KIZUuColF_zEwIdtOO7tglMEc6DOj-MA3x66-qZQdpdrZItvEdJZjs96kYDpQ1WPH6zCM9Ki8dJNsuay-3ww_RY9rdU-1XV9wnb6A8KcQCx_ieOoavsPoKppFjv3oQCun4npmzoc3gHrOjmpZiSDgGHb6BrV6q0FVHD95WjvzF_-xAxjm82IhL5IHIxDtRbE594LukaLrjpPmCq__PcDF8Af068Q&v=404'}
+{'comments': '5.7万+',
+ 'name': '戴尔DELL灵越飞匣14.0英寸便携笔记本电脑(i5-7200U 4G 500G R520 2G独显 Win10)黑',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/100000011363.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（0VCD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 128GSSD+500G '
+         '2G独显）',
+ 'price': '5499.00',
+ 'url': 'https://item.jd.com/6072622.html'}
+{'comments': '2900+',
+ 'name': '华为（HUAWEI） 荣耀笔记本MagicBook 14英寸轻薄便携学生本办公商务超薄本超极本电脑 '
+         '锐龙版AMD+8G+256G集显（冰河银）',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/31204952898.html'}
+{'comments': '4700+',
+ 'name': '天宝（T-bao） R8 15.6英寸超薄游戏笔记本电脑 便携商务办公轻薄本 全高清窄边框学生超极本 银色 6G内存128G固态硬盘 '
+         'N3450 四核CPU',
+ 'price': '1288.00',
+ 'url': 'https://item.jd.com/17928948059.html'}
+{'comments': '4600+',
+ 'name': '华硕（ASUS）顽石超薄本A480 酷睿i3轻薄家用影音学生固态独显超极本商务办公手提游戏笔记本电脑 '
+         'i3-7100U/8G/500G+128G固态',
+ 'price': '3699.00',
+ 'url': 'https://item.jd.com/20164371186.html'}
+{'comments': '400+',
+ 'name': '壹号本（ONEMIX2S）碟中谍联名限量款 酷睿8100Y 7英寸口袋笔记本电脑平板电脑二合一预售 黑色',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/35175058740.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（04CD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256SSD '
+         'Office）冰原银',
+ 'price': '5099.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NTgzLmh0bWw&log=5s5M0_ivhTUNWCftXZwdaqtI4CglTYL_yTlnEcrvSF7rYPtS7h-O-DzdSkx1uwUJNAp0vWWA42Ty4-2SBrWHyUsX5Bt1cVy2ieYWKcF8ZKaKjmpXJfEzrq0OUTstEW_nBb9B3WndAyv-5OhvZ0ESday3kJZqeIDwrjMDdhmrWLHeg9XNVpHM7KNlpGALvjrpqraOWzUtnlzUOxZ74Y1cWzuzN6JZPacPq5rMTiW5BOifUSHQ_-PMlYX5ymrIg3X93tmjmluian8OrL2ddFbK18vwVOm6tbGbfgZ20uNEwjF3qkBCnBBbUljbhqURUkm0n8Dm7aI_A5aBEw7vv842qNG4hjwHCCsFzAl4J-8_5mraiFQSL4E-ISXjtAY-A-dXVIFKXcJW2VWPVtiI-Gk5TnRLk11jGWUC8Vw2-LbVLGRYGXLZz6E8lome8cr-jdEOYfLxFlAmdFtTZj6Mh0eqJHcv7gwgiJmhawn9MvK48no3w4PMnv2v1r5ZZDkJy8gmKXAgP21Ee1YgqcUm1ysclw&v=404'}
+{'comments': '1800+',
+ 'name': '宏碁（acer） 官方旗舰店A315轻薄便携学生商务办公宏基笔记本电脑15.6英寸游戏本手提2G独显 2G独显 标 '
+         '配：A4/4G/128G固态',
+ 'price': '2699.00',
+ 'url': 'https://item.jd.com/27377066587.html'}
+{'comments': '2.9万+',
+ 'name': '联想IdeaPad330-15新一代酷睿I3超性能手提笔记本电脑超薄本游戏轻薄本办公商用本学生本 新一代酷睿i3/4G/128G/定制 '
+         'W10 银色 15.6英寸[送正版office]',
+ 'price': '2899.00',
+ 'url': 'https://item.jd.com/26395831445.html'}
+{'comments': '14万+',
+ 'name': '小米(MI)Air 13.3英寸全金属超轻薄笔记本电脑(i5-8250U 8G 256G PCIE SSD MX150 2G独显 '
+         '72%NTSC FHD 预装Office 指纹版)银',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/7269871.html'}
+{'comments': '7400+',
+ 'name': '得峰（Deffad）A3 14英寸窄边框四核低功耗 超极轻薄办公笔记本电脑 娱乐游戏 银色-四核 '
+         '四核X5-Z8350/4G内存64G存储',
+ 'price': '978.00',
+ 'url': 'https://item.jd.com/1298930257.html'}
+{'comments': '2.4万+',
+ 'name': '联想IdeaPad330c-15八代酷睿I5/I7性能游戏笔记本电脑 轻薄本超薄本商务办公本手提电脑 '
+         '标配[I7-8550U/4G/1TB/2G独显] 小新潮5000升级 新款黑色[送正版office',
+ 'price': '4699.00',
+ 'url': 'https://item.jd.com/26498549640.html'}
+{'comments': '2.1万+',
+ 'name': '惠普（HP）EliteBook 745G5 14英寸轻薄笔记本电脑（锐龙5 PRO 2500U 8G 256SSD Win10 FHD '
+         'Office一年上门）',
+ 'price': '4799.00',
+ 'url': 'https://item.jd.com/7588521.html'}
+{'comments': '8700+',
+ 'name': '联想ThinkPad E485（01CD）14英寸笔记本电脑（锐龙5-2500U 8G双通道 256GSSD FHD Win10）黑色',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/100000060090.html'}
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480（40CD）英特尔8代酷睿14英寸轻薄笔记本电脑（i5-8250U 8G 512GSSD 2G独显 '
+         'FHD）冰原银',
+ 'price': '6499.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDA1NDM4MzguaHRtbA&log=5s5M0_ivhTUNWCftXZwdaqtI4CglTYL_yTlnEcrvSF7TOw2R8lgbyvkD3ViMxZPSBGMXjP5oHeEJVb_bX9MwRmibxHx6XSIAVZxrk-8FIJsCot3PQ9Gdy5vVTOhSXLEDtJPUKPea82fPG8HBG2zLAZKWpXhitwKGXTJG6OmapyyNBQzBRgzVMy2-HRtAVsSgku_OsXfEXaUNnT2a3Ndu_gtIaBzgpTVogEo09Vl8FX-O1UbGWXTdSIza6irVSmdN5hWdWKymdmk43r4D7blBkYaSlahqyERA60A4xihzA7WV0MPTfWuJoFKurEfTeqgm9kSiUf46XJjuM5TlR17zo9YAXCAkTfvMSvltLZ68onL-unW1U5jl7z0WN_awuXjqoe_yMdTUzJx45Vs_2KetF0MCEK8O7e_QujuPC_0jwFgK1kg3ES81x7K-mu9PHlgQLl-ADa6e6rQa3q7Q4WwaVZi-vZFUTNuITndJrrdzrXE1qDnT2968UsiRklQnRI9pAiPB8pIZmB1yu3E3TnOrEg&v=404'}
+{'comments': '8万+',
+ 'name': '戴尔(DELL)成就3470高性能商用办公台式电脑整机(八代i5-8400 8G 1T 四年上门售后 键鼠 WIFI 蓝牙)21.5英寸',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/7108222.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSDPCIe '
+         'MX150)轻奢灰',
+ 'price': '4998.00',
+ 'url': 'https://item.jd.com/100000863175.html'}
+{'comments': '5.4万+',
+ 'name': '武极 i7 8700/华硕GTX1060-6G/240G 游戏台式吃鸡电脑主机/DIY组装机',
+ 'price': '4996.00',
+ 'url': 'https://item.jd.com/1555771170.html'}
+{'comments': '13万+',
+ 'name': '联想(Lenovo)小新潮7000 14英寸轻薄笔记本电脑(I5-8250U 8G 256G PCI-E SSD UMA '
+         '正版Office)银',
+ 'price': '4599.00',
+ 'url': 'https://item.jd.com/100000117782.html'}
+{'comments': None,
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 512G FHD IPS 正版Office）冰河银',
+ 'price': '4299.00',
+ 'url': 'https://item.jd.com/100000323510.html'}
+{'comments': None,
+ 'name': '联想(Lenovo)小新潮7000 14英寸轻薄笔记本电脑(英特尔酷睿I5-8250U 8G 1T+128G PCIE '
+         'SSD正版Office)银',
+ 'price': '4999.00',
+ 'url': 'https://item.jd.com/100000644947.html'}
+{'comments': None,
+ 'name': '联想ThinkPad 翼490（2DCD）14英寸轻薄窄边框笔记本电脑（i5-8265U 8G 128GSSD+1T RX550X '
+         '2G独显）冰原银',
+ 'price': '6199.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDE3NjI4NTEuaHRtbA&log=1VxiSYfWnrSwCekg7t_ETXbMKInKBeOkj30bQxRbK-suSrh-hvph5_wMEnp9EZaaDLNwfTWP2BFEXJRyh0KNoHpZTTycSzCAcys7UcQ3w7NaHEaMPkKmO_lfyowrpfpDPLs4QLGDELZw39-tW2nljzIo3iQj8s2mZh9U8KLfyWU9OVJ9h2I70_1C7E83PB8VUbMcScq63Rb2lkULH9kkiT_db2j9Zer4USjMGH1ZUDa3tHUf2ZD8j9NNtHChIaQL8c6HnZ9TU2u4cmMCF54vARKOEkPsaB_UuqKtehRx46NFa4MsnfuAt5piC4VBIa3HYxwfsDrIZhG2uGZiwn7zyq1rk6EydQUouP9obrHgl_S6Zm2tKzvlKmwVjvFjVVdy7M433EomlVgRpXMToUlJ4k7weurULaGoMAdeCLaHLRKbgFsFG1mh0v627m3m1w2dflcy57ux6V2EbReac5AR9hMx0J36-OIodagZBlYgr-Y56-vkGvahIjvcavV8BKGdZTozt116vSDl5bEg_rKhGQ&v=404'}
+{'comments': None,
+ 'name': '联想扬天V110系列14英寸超薄本轻薄便携影音娱乐家用学生上网超极本商务办公手提笔记本电脑 标配【E2-9010/4G/128G固态】 '
+         '2G独显 黑色',
+ 'price': '2399.00',
+ 'url': 'https://item.jd.com/34687073421.html'}
+{'comments': None,
+ 'name': '联想(Lenovo)小新潮7000 14英寸轻薄笔记本电脑(I7-8550U 8G 1T+128G PCIE SSD R535 '
+         '正版Office)银',
+ 'price': '5699.00',
+ 'url': 'https://item.jd.com/100001269968.html'}
+{'comments': None,
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256G MX150 2G独显 FHD IPS '
+         '正版Office）冰河银',
+ 'price': '4999.00',
+ 'url': 'https://item.jd.com/7271737.html'}
+{'comments': None,
+ 'name': '小米 (MI) Ruby 15.6英寸金属轻薄笔记本电脑(i5-8250U 4G 1T+128G SSD 2G GDDR5独显 FHD '
+         '全键盘 正版Office Win10) 深空灰',
+ 'price': '4199.00',
+ 'url': 'https://item.jd.com/100000011351.html'}
+{'comments': None,
+ 'name': '戴尔灵越14 燃 14英寸轻薄窄边框笔记本电脑(i5-8265U 8G 256GSSD MX150 2G独显 背光键盘）冰河银',
+ 'price': '5599.00',
+ 'url': 'https://item.jd.com/100000117758.html'}
+{'comments': None,
+ 'name': '联想笔记本 V330-14英寸锐龙R3 轻薄商用办公笔记本电脑 学生上网本 标配 锐龙R3 4G 128G+500G 荣耀灰 '
+         'FHD高清屏',
+ 'price': '3449.00',
+ 'url': 'https://item.jd.com/40339494530.html'}
+{'comments': None,
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256GSSD 2G独显 FHD '
+         'IPS屏）银',
+ 'price': '5499.00',
+ 'url': 'https://item.jd.com/6072614.html'}
+{'comments': None,
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 256GSSD+1T 2G独显 '
+         'FHD）银',
+ 'price': '7899.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NjExLmh0bWw&log=1VxiSYfWnrSwCekg7t_ETXbMKInKBeOkj30bQxRbK-uJtrcN8JiCDgaICF9HBZEqy5-cfck4wxtRo27mw1l3XwL-NdSD6ZET4hG5rJfcvtj9e47vdxExScolqpLlCWbtwxsvtCmSQq3EQzAWQoCeNksL7RWaSvNe1XpJA4SePb0f1MTNG4hprcjwDbwn-ZQ-cMx6HqKLLvR_6I5xaJpjFubvger0NFFFSgN7Ve0QdevmKOp584dH0dme0cABCVlzkMz0HB9Z15BhNlB0IE_2S-XVj0iSdC4N6z1gogm5oIxa5X_nl7VRG4qJaF2pUMueGm39o2oOwK1idLw-sbNw-Wtp3gYMvcLTOob4AxxVMS2a39Oftz8WoX1gpSaDfbk1DT7KctwW0j6YRd5pWd2EDgpOLiyvzw1SbxSjHZUqObCk5PCZBTCLa-ehNGUEQf859wtjHTPotUrewnxwlooqjQEcR63zkoy0gEi6Ky9puXZFTTc7OyHrvT7oYPrhFEKqmozMETVFJc9SJKzzHn28pQ&v=404'}
+{'comments': None,
+ 'name': '华硕a豆(adol) 13.3英寸四面窄边框轻薄笔记本电脑(i3-8130U 4G 256GSSD IPS)皓月银',
+ 'price': None,
+ 'url': 'https://item.jd.com/100000018405.html'}
+{'comments': None,
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 512G SSD MX150 '
+         '高色域)轻奢灰',
+ 'price': '5599.00',
+ 'url': 'https://item.jd.com/100001045546.html'}
+{'comments': None,
+ 'name': '华硕a豆(adol) 13.3英寸四面窄边框轻薄笔记本电脑(i3-8145U 4G 256GSSD IPS)玫瑰金',
+ 'price': None,
+ 'url': 'https://item.jd.com/100002407770.html'}
+{'comments': None,
+ 'name': '联想(Lenovo)330C15.6英寸英特尔八代酷睿商务影音笔记本电脑(i5-8250U 4G 1T+128G SSD MX110 '
+         '正版Office)黑',
+ 'price': '4299.00',
+ 'url': 'https://item.jd.com/7765111.html'}
+{'comments': None,
+ 'name': '惠普（HP）战66 Pro G1 14英寸轻薄笔记本电脑（i5-8250U 8G 360G PCIe SSD 标压MX150 '
+         '2G独显）银色',
+ 'price': '4999.00',
+ 'url': 'https://item.jd.com/7748348.html'}
+{'comments': None,
+ 'name': '联想ThinkPad E480（36CD）英特尔7代酷睿14英寸窄边框笔记本电脑（i5-7200U 8G 500G Win10）黑',
+ 'price': '4299.00',
+ 'url': 'https://item.jd.com/8596147.html'}
+{'comments': None,
+ 'name': '华硕(ASUS) 灵耀S 2代 14英寸三面微边超轻薄笔记本电脑(i5-8250U 8G 512GSSD MX150 2G '
+         'IPS)冰钻金(S4300)',
+ 'price': None,
+ 'url': 'https://item.jd.com/100000158780.html'}
+{'comments': None,
+ 'name': '华硕（ASUS） 旗舰店 灵耀S 2代14英寸三面窄边框超轻薄笔记本电脑IPS屏 消光灰 '
+         'i5-8250U/8G/256G固态/MX150',
+ 'price': '4899.00',
+ 'url': 'https://item.jd.com/33694884392.html'}
+{'comments': None,
+ 'name': '小米(MI) Air 12.5英寸金属超轻薄笔记本电脑(酷睿I5处理器 4G 256G固态硬盘 全高清屏 背光键盘 ) 银色',
+ 'price': '4299.00',
+ 'url': 'https://item.jd.com/100001702313.html'}
+{'comments': None,
+ 'name': '华硕（ASUS） 旗舰店 轻薄PX554 15.6英寸手提笔记本电脑 银灰色 i5-8250U/8G/256G SSD',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/28206239565.html'}
+{'comments': None,
+ 'name': '惠普（HP） 【官方旗舰店 】王源星14系列微边框轻薄本笔记本手提电脑超薄本商务学生游戏【新品上市】 初恋粉：【8代增强版】【IPS屏】 '
+         '爆款一：i5/8G/256G/PCIe【6倍提速】',
+ 'price': '5299.00',
+ 'url': 'https://item.jd.com/27914580589.html'}
+{'comments': None,
+ 'name': '苹果（Apple） MacBook Air 苹果笔记本电脑 13.3英寸轻薄本 套餐版下单即送大礼包 '
+         '2017款/i5/8GB/128GB/D32',
+ 'price': '5988.00',
+ 'url': 'https://item.jd.com/24350743428.html'}
+{'comments': None,
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 256G FHD IPS 正版Office）星空灰',
+ 'price': '3687.00',
+ 'url': 'https://item.jd.com/100001020297.html'}
+{'comments': None,
+ 'name': '华为笔记本MateBook 13 超薄本13英寸全面屏轻薄本学生商务办公便携手提笔记本电脑超极本 皓月银| i7 8G '
+         '512G独显【预定20号发货 豪华礼包套装',
+ 'price': '6399.00',
+ 'url': 'https://item.jd.com/39225376380.html'}
+{'comments': None,
+ 'name': '小米 (MI)Ruby 15.6英寸金属轻薄笔记本电脑(i5-8250U 8G 1T+128G SSD 2G GDDR5独显 FHD '
+         '全键盘 正版Office Win10) 深空灰',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/100000011349.html'}
+{'comments': None,
+ 'name': '宏碁(Acer)蜂鸟Swift3微边框金属轻薄本14英寸笔记本电脑SF314(i5-8250U 8G 128G SSD+1T IPS '
+         '指纹)小超银',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/7056182.html'}
+{'comments': None,
+ 'name': 'ThinkPad联想游侠 E485（00CD） 14英寸锐龙R5笔记本电脑办公游戏商务轻薄本ibm R5-2500U '
+         '8G内存128G固态+500G 正版office+win10 荣耀黑 ）升配',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/38129252289.html'}
+{'comments': None,
+ 'name': '惠普（HP） 【官方旗舰店 】王源星14系列微边框轻薄本笔记本手提电脑超薄本商务学生游戏【新品上市】 静谧银：【8代增强版】【IPS屏】 '
+         '爆款一：i5/8G/256G/PCIe【6倍提速】',
+ 'price': '5299.00',
+ 'url': 'https://item.jd.com/27914580583.html'}
+{'comments': None,
+ 'name': '联想（Lenovo）扬天V330 14英寸笔记本电脑(AMD锐龙5  8G 256G SSD win10 两年上门 两年联保)星空灰',
+ 'price': '3995.00',
+ 'url': 'https://item.jd.com/100000898412.html'}
+数据解析
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 128GSSD+1T 2G独显 '
+         'FHD）银',
+ 'price': '6799.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NjA5Lmh0bWw&log=ypqsQdVlq5J6Z001gtKs15YPgoSeXG28S8gNGQwr28OK8PpFcCIwDc0Os1xWlc9OnR2bpFv2OXD4M5v91yF_4X7ci6HD2CsNTZ6glaqS_x8SwLjpKryfkMHE_EbJc74lNvzdvmmzR1CqqeMzy7c2I6e-Y-ViSZGmABNR1-Xwn5YTh4rpUKuIS9rH26KmBWxcm3BsJMyLdmmt0Jf6T-J_QPz_RozqQTxi98JcBhMgMI9FrSIPkaZy4SL-2zvNxaUiD0z3AxUCyrt2qAKO7O3qHLXaGXkg2kk0fEwV_Tvq6EgN6K1KLVS9QPQHg7KrnUg0FKiL0AbgkVcB_MtO6lVtVBtM_G7bWOEBaeWQeALhhTohUAOcsK3YpR9m8z9xUo5H6aT8uq3GSm28hyyz14wuhHYIlq_0TBmAlpZv7DE82iSzCJ20b1yi1T7n0JtJo0rWIYQoe0gszg8YbY0F2fTru4R-VU6wpO8uK96YaCrqxzvnp34Q8PmQTOC2uc4sZPpU1JDVeogsvizFyMg9PvtRYA&v=404'}
+{'comments': '11万+',
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 256G FHD IPS 正版Office）冰河银',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/7512626.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)扬天M5200k 商用办公台式电脑整机（AMD A6-8570 4G 500G 集成 WIN10 '
+         '四年上门）19.5英寸',
+ 'price': '2488.00',
+ 'url': 'https://item.jd.com/7172418.html'}
+{'comments': '11万+',
+ 'name': 'Apple MacBook Air 13.3英寸笔记本电脑 银色(2017款Core i5 处理器/8GB内存/128GB闪存 '
+         'MQD32CH/A)',
+ 'price': '6488.00',
+ 'url': 'https://item.jd.com/5225346.html'}
+{'comments': '500+',
+ 'name': '联想扬天商务本v310-15超薄本商务办公本娱乐便携家用影音学生双核笔记本电脑采购英特尔N4000 标配：4G内存+500G大硬盘 集显 '
+         '15.6英寸 银灰色 正版win10',
+ 'price': '2319.00',
+ 'url': 'https://item.jd.com/32457565496.html'}
+{'comments': '1900+',
+ 'name': '宏硕 酷睿i5-8400/I7四核 /送显示器/GTX1060独显/吃鸡游戏台式机DIY组装电脑主机 电脑整机 套餐二 '
+         '酷睿i7/16G/GTX1060独显',
+ 'price': '3599.00',
+ 'url': 'https://item.jd.com/32972768194.html'}
+{'comments': '6.9万+',
+ 'name': 'Apple MacBook Pro 13.3英寸笔记本电脑 银色 2018新款（四核八代i5 8G 256G固态硬盘 '
+         'MR9U2CH/A）',
+ 'price': '12588.00',
+ 'url': 'https://item.jd.com/7629508.html'}
+{'comments': '4.8万+',
+ 'name': '联想ThinkPad E480（2XCD）14英寸轻薄窄边框笔记本电脑（i3-7020U 4G 500G FHD Win10）银',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/8596169.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSD PCIe MX150 '
+         ')复古金',
+ 'price': '5299.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDEwNDU1MTQuaHRtbA&log=ypqsQdVlq5J6Z001gtKs15YPgoSeXG28S8gNGQwr28P3QyoCwe7U8EZ32MAYb1SpBfvVUK5pqN56dvsi464mYL14V0DCS39Qw0uZR7QvsAfZu2qO5R8UWrCM3aL4_nyxgZOhKsXCOsT520-AD_gAXACMVEvpzQaTTx2zdEmeiImgxqMZf_3oySBhxCFsclhE5XCaeKoq_AtY3KGBAq1uvd4P9EKCxrikFk22ODZGWmP8qqovqoctZ_0bh9g8YmIM6OdjD4ARNYH3zvhlSJLhXi8cxOcXUTIkL7k5Iefd-1yKZkFW5v5zZ_EDK1BSVmuHnS02jAClgS8TRUeJ52jPx-uXUwJB9V0rAvAVbM72iGF_lBHfv50HIxLtSF0aAvHzaB9Zfnz8_DiX2i8uNI1s0Pvc7mjHeEPcV2pmcvraqT-GYbKYQsaL17qUp9Bsp8YZjvDqofG866RnqyWLaYEweEwkMZzQbAfxhfDLQi_Bft36trZ4hUJsQQsaPZVTowqyCV8QF9fzH479CEX1iX57Pg&v=404'}
+{'comments': '5.7万+',
+ 'name': '戴尔DELL灵越飞匣14.0英寸便携笔记本电脑(i5-7200U 4G 500G R520 2G独显 Win10)黑',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/100000011363.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（0VCD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 128GSSD+500G '
+         '2G独显）',
+ 'price': '5499.00',
+ 'url': 'https://item.jd.com/6072622.html'}
+{'comments': '2900+',
+ 'name': '华为（HUAWEI） 荣耀笔记本MagicBook 14英寸轻薄便携学生本办公商务超薄本超极本电脑 '
+         '锐龙版AMD+8G+256G集显（冰河银）',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/31204952898.html'}
+{'comments': '4700+',
+ 'name': '天宝（T-bao） R8 15.6英寸超薄游戏笔记本电脑 便携商务办公轻薄本 全高清窄边框学生超极本 银色 6G内存128G固态硬盘 '
+         'N3450 四核CPU',
+ 'price': '1288.00',
+ 'url': 'https://item.jd.com/17928948059.html'}
+{'comments': '4600+',
+ 'name': '华硕（ASUS）顽石超薄本A480 酷睿i3轻薄家用影音学生固态独显超极本商务办公手提游戏笔记本电脑 '
+         'i3-7100U/8G/500G+128G固态',
+ 'price': '3699.00',
+ 'url': 'https://item.jd.com/20164371186.html'}
+{'comments': '400+',
+ 'name': '壹号本（ONEMIX2S）碟中谍联名限量款 酷睿8100Y 7英寸口袋笔记本电脑平板电脑二合一预售 黑色',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/35175058740.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（04CD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256SSD '
+         'Office）冰原银',
+ 'price': '5099.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NTgzLmh0bWw&log=ypqsQdVlq5J6Z001gtKs15YPgoSeXG28S8gNGQwr28PtmH1xPZH8jP6vNcLGeKRgqK1D-4luylKQXtab1CCV8WjDVR9FpbblBxF746ffCp2mDt99cxKMs5LBn6oNhqXzM3NCEQSCHs0OvGmdq81491eE_b55rRb7VF0Wjtvfjr_SNFgqlXQFiPi60-7Zn60T-nsrUGkmYeGrF1FgLvSRnEKC8k87dER3gm6u_-SggYgksKiuh0ex-wglrqt-UqnZMCuqfGxRWr4sJelERyUujNqicf3y4SSfWVdh0QgQI9XrK_8v6uYK52qp1GXvdmHc6DWG1r_E1XjAGLiG2VGIWpfLqsuMHQ93QkX2oQ2m-_EJB2sE8Rpw7GqdrJRTrrQQWVXzE8rFNEFpRsG5RcZfliW83vOt91W5wu42I_gICEKeQYGNeVk2VL5tGXOKTU0J906oZYwy50tZZLC0MO2FUezAzZFf22LzdrKI9hGSXbvlddIREi_gDInKIGn95kBE55WxEOXqGsrN_P-PgbQ95A&v=404'}
+{'comments': '1800+',
+ 'name': '宏碁（acer） 官方旗舰店A315轻薄便携学生商务办公宏基笔记本电脑15.6英寸游戏本手提2G独显 2G独显 标 '
+         '配：A4/4G/128G固态',
+ 'price': '2699.00',
+ 'url': 'https://item.jd.com/27377066587.html'}
+{'comments': '2.9万+',
+ 'name': '联想IdeaPad330-15新一代酷睿I3超性能手提笔记本电脑超薄本游戏轻薄本办公商用本学生本 新一代酷睿i3/4G/128G/定制 '
+         'W10 银色 15.6英寸[送正版office]',
+ 'price': '2899.00',
+ 'url': 'https://item.jd.com/26395831445.html'}
+{'comments': '14万+',
+ 'name': '小米(MI)Air 13.3英寸全金属超轻薄笔记本电脑(i5-8250U 8G 256G PCIE SSD MX150 2G独显 '
+         '72%NTSC FHD 预装Office 指纹版)银',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/7269871.html'}
+{'comments': '7400+',
+ 'name': '得峰（Deffad）A3 14英寸窄边框四核低功耗 超极轻薄办公笔记本电脑 娱乐游戏 银色-四核 '
+         '四核X5-Z8350/4G内存64G存储',
+ 'price': '978.00',
+ 'url': 'https://item.jd.com/1298930257.html'}
+{'comments': '2.4万+',
+ 'name': '联想IdeaPad330c-15八代酷睿I5/I7性能游戏笔记本电脑 轻薄本超薄本商务办公本手提电脑 '
+         '标配[I7-8550U/4G/1TB/2G独显] 小新潮5000升级 新款黑色[送正版office',
+ 'price': '4699.00',
+ 'url': 'https://item.jd.com/26498549640.html'}
+{'comments': '2.1万+',
+ 'name': '惠普（HP）EliteBook 745G5 14英寸轻薄笔记本电脑（锐龙5 PRO 2500U 8G 256SSD Win10 FHD '
+         'Office一年上门）',
+ 'price': '4799.00',
+ 'url': 'https://item.jd.com/7588521.html'}
+{'comments': '8700+',
+ 'name': '联想ThinkPad E485（01CD）14英寸笔记本电脑（锐龙5-2500U 8G双通道 256GSSD FHD Win10）黑色',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/100000060090.html'}
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480（40CD）英特尔8代酷睿14英寸轻薄笔记本电脑（i5-8250U 8G 512GSSD 2G独显 '
+         'FHD）冰原银',
+ 'price': '6499.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDA1NDM4MzguaHRtbA&log=ypqsQdVlq5J6Z001gtKs15YPgoSeXG28S8gNGQwr28MRkw6zpGKtcV6moKxb837UVL38kS8k6VljvZHokEVH3rxYJSnCew_33EN1aKseXH6R-7M48uPV3qkPsD6F7PAEmujCvtsmGTZwU-1UIQjHFbARBoUHuovOE1r2wFvT_jigfKAuQvVpZLIoxuANlo56g53JYHTJ4S0oREW2c2T8Y78sZvQTJY0dflyllERWna1aTyMVYmZGhJ48z1NOkgoBYcRtX0nd0bHD01HG4xlkshsqS2T9wkCVGg3DbXI7ZL269zB3zb306fJ9Uaj0wwcDRCnCI6d4z2raJXoz8txQwL3W6knhUZFdNoFw6O5fLCujDWHUiqOtSnmv7ry9G4ugpFLuMD29bFBt1VIG5_A6BsJ2eXRMGT5VlC2UAS2BIDaMz-Wb22ydHL0U9bARjVg00iXtx5PHVCt2-cpYk8wS3QiIw35QbzozmRa4KqLcLJEiNZ_o7EZDGV3r_JfLBDjUqv_7WCJXEc82pqRaNoo2Ug&v=404'}
+{'comments': '8万+',
+ 'name': '戴尔(DELL)成就3470高性能商用办公台式电脑整机(八代i5-8400 8G 1T 四年上门售后 键鼠 WIFI 蓝牙)21.5英寸',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/7108222.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSDPCIe '
+         'MX150)轻奢灰',
+ 'price': '4998.00',
+ 'url': 'https://item.jd.com/100000863175.html'}
+{'comments': '5.4万+',
+ 'name': '武极 i7 8700/华硕GTX1060-6G/240G 游戏台式吃鸡电脑主机/DIY组装机',
+ 'price': '4996.00',
+ 'url': 'https://item.jd.com/1555771170.html'}
+{'comments': '13万+',
+ 'name': '联想(Lenovo)小新潮7000 14英寸轻薄笔记本电脑(I5-8250U 8G 256G PCI-E SSD UMA '
+         '正版Office)银',
+ 'price': '4599.00',
+ 'url': 'https://item.jd.com/100000117782.html'}
+数据解析
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 128GSSD+1T 2G独显 '
+         'FHD）银',
+ 'price': '6799.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NjA5Lmh0bWw&log=grgawL3lLYPYtnGo-5zRipossY74B-viVSdcGNrnWKzNXqtJA9O1os4Z5cqW5fIDdaCga4r7JEgwNljTB_8vBhNEnDZvx8YGWUsffCIu9ZZ9xZKzPrJWQ67V4lawUg_STWoIpsMq7GhgtcXQPUYZ0j7t5yjBBjxNISQWKFOlmPhXTEFkiAQxc5kJWQ3xzZFnF8CPiqGohGptp_PxNLDDxpl6d-hrZlp4SXFVWj4H-QC8Xs0a1mJIX2WtuvkU_fvujMa9bs8tjjHQx91VbocdXfQOFnVQbaX5EsU8TXyCXtKlWhtP9Oi_TFsxkU71tdogW07J_0u5V3Mln-BsBUydfWvH_ywgr085h44jose8_Myp4ikr7xBFeawzms_MD8H_4yNBsHRZBRLzv_6TO545-BN7q_P6q0WAXgUl-tM6XXmWj-rm5Sz5rra2YTnTZWLRUUeyBliiOcN2hT4I5-6iWSmlPanrAVxEOKRTZJ4Wt1o0dAGE8vvGBRdhs8RTa8aEkrJQgI1Aeim8NTaCPAok9Q&v=404'}
+{'comments': '11万+',
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 256G FHD IPS 正版Office）冰河银',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/7512626.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)扬天M5200k 商用办公台式电脑整机（AMD A6-8570 4G 500G 集成 WIN10 '
+         '四年上门）19.5英寸',
+ 'price': '2488.00',
+ 'url': 'https://item.jd.com/7172418.html'}
+{'comments': '11万+',
+ 'name': 'Apple MacBook Air 13.3英寸笔记本电脑 银色(2017款Core i5 处理器/8GB内存/128GB闪存 '
+         'MQD32CH/A)',
+ 'price': '6488.00',
+ 'url': 'https://item.jd.com/5225346.html'}
+{'comments': '500+',
+ 'name': '联想扬天商务本v310-15超薄本商务办公本娱乐便携家用影音学生双核笔记本电脑采购英特尔N4000 标配：4G内存+500G大硬盘 集显 '
+         '15.6英寸 银灰色 正版win10',
+ 'price': '2319.00',
+ 'url': 'https://item.jd.com/32457565496.html'}
+{'comments': '1900+',
+ 'name': '宏硕 酷睿i5-8400/I7四核 /送显示器/GTX1060独显/吃鸡游戏台式机DIY组装电脑主机 电脑整机 套餐二 '
+         '酷睿i7/16G/GTX1060独显',
+ 'price': '3599.00',
+ 'url': 'https://item.jd.com/32972768194.html'}
+{'comments': '6.9万+',
+ 'name': 'Apple MacBook Pro 13.3英寸笔记本电脑 银色 2018新款（四核八代i5 8G 256G固态硬盘 '
+         'MR9U2CH/A）',
+ 'price': '12588.00',
+ 'url': 'https://item.jd.com/7629508.html'}
+{'comments': '4.8万+',
+ 'name': '联想ThinkPad E480（2XCD）14英寸轻薄窄边框笔记本电脑（i3-7020U 4G 500G FHD Win10）银',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/8596169.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSD PCIe MX150 '
+         ')复古金',
+ 'price': '5299.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDEwNDU1MTQuaHRtbA&log=grgawL3lLYPYtnGo-5zRipossY74B-viVSdcGNrnWKywOyAdSrewT8opSc1rIcjHUc3uJyEiQd57nSXANRK0qC1ZdFBJC8NWohVSrIIUF6lqaRNnCTp2mVx4RB3lYS01px2aP6z8lQF1HVE7ZzPFrOtgPUX-xn9K9OY5QmBu17CyvCe1B8xuHw_EDC2rBSW_US-IPebC8GLSN5OUqHuQ0gLdmuawrY8389pdeCMawd5pvk3FlCzW_nDQa9QqlzicvzdFxCVXBgKsKNNczMpRaIb8KWoqTudN9oknJN2JGoM3e4rQMbMj2NiWhVBHca4dl8BinlDHh3WeuEQXpvq-K_Bd5X-QeOBknGw-5_B4zLNEUwn-hEIHTzlM9Z9Uto93j00dSU623Q02iljbQ9iixYB8tfO2KkbfbH2KZicd9JDlf_sJrO3zGeAjpJVyFFI859aybDPt1bUYTVddGRGNLw_Vk63-2gKttS7G72Zqywwpk9Nv7HV0viGme9Qb_C7pUT1GOV-zzQaaB9l90H4CsA&v=404'}
+{'comments': '5.7万+',
+ 'name': '戴尔DELL灵越飞匣14.0英寸便携笔记本电脑(i5-7200U 4G 500G R520 2G独显 Win10)黑',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/100000011363.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（0VCD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 128GSSD+500G '
+         '2G独显）',
+ 'price': '5499.00',
+ 'url': 'https://item.jd.com/6072622.html'}
+{'comments': '2900+',
+ 'name': '华为（HUAWEI） 荣耀笔记本MagicBook 14英寸轻薄便携学生本办公商务超薄本超极本电脑 '
+         '锐龙版AMD+8G+256G集显（冰河银）',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/31204952898.html'}
+{'comments': '4700+',
+ 'name': '天宝（T-bao） R8 15.6英寸超薄游戏笔记本电脑 便携商务办公轻薄本 全高清窄边框学生超极本 银色 6G内存128G固态硬盘 '
+         'N3450 四核CPU',
+ 'price': '1288.00',
+ 'url': 'https://item.jd.com/17928948059.html'}
+{'comments': '4600+',
+ 'name': '华硕（ASUS）顽石超薄本A480 酷睿i3轻薄家用影音学生固态独显超极本商务办公手提游戏笔记本电脑 '
+         'i3-7100U/8G/500G+128G固态',
+ 'price': '3699.00',
+ 'url': 'https://item.jd.com/20164371186.html'}
+{'comments': '400+',
+ 'name': '壹号本（ONEMIX2S）碟中谍联名限量款 酷睿8100Y 7英寸口袋笔记本电脑平板电脑二合一预售 黑色',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/35175058740.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（04CD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256SSD '
+         'Office）冰原银',
+ 'price': '5099.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NTgzLmh0bWw&log=grgawL3lLYPYtnGo-5zRipossY74B-viVSdcGNrnWKxBbDWoz_dlQ9pmqU4Vyu9d01Ze4R0Bu_1qDnBXsVcptcLgRZefz6GBVIxJTbJAGKgKmwR64bM-rTnf1akWHSNKmoW2hhUuxAHXy2f2NrwUm92IzXOxfOKCBYjrdqccCAb9XWdA1smylHikHtUFJnxQDMGL_T2Q_OYT8rTi5SHu3hJXauTLR_0-BRSDDlkSPjyicurVSLT7IBXchDOjZ2Ee5Nb380IQiTZ8UBm0GPQKqau6joTRGXaS5HipP4U3y-6Nt0xxax6LhS1wjC41wrSB1tD6TEdfn6WmcCeHVfLR614jubw9tAWX3euHjMTH1UXvtlihuaHDjLjCBDBI2YadZFCvZ9RE9sd0w8m6Qx9usDjGO3BxsKine4CYMtXDYDMo2QqA6M3hlUjJgzkXDprGZZs6p1BsfOer2XdS7lfOhog0PYKoGXvJjgThXy1rcwdTvtRHwC3-BrmbWN6InCp528bJIg7qF7MQRoS0uVlQnA&v=404'}
+{'comments': '1800+',
+ 'name': '宏碁（acer） 官方旗舰店A315轻薄便携学生商务办公宏基笔记本电脑15.6英寸游戏本手提2G独显 2G独显 标 '
+         '配：A4/4G/128G固态',
+ 'price': '2699.00',
+ 'url': 'https://item.jd.com/27377066587.html'}
+{'comments': '2.9万+',
+ 'name': '联想IdeaPad330-15新一代酷睿I3超性能手提笔记本电脑超薄本游戏轻薄本办公商用本学生本 新一代酷睿i3/4G/128G/定制 '
+         'W10 银色 15.6英寸[送正版office]',
+ 'price': '2899.00',
+ 'url': 'https://item.jd.com/26395831445.html'}
+{'comments': '14万+',
+ 'name': '小米(MI)Air 13.3英寸全金属超轻薄笔记本电脑(i5-8250U 8G 256G PCIE SSD MX150 2G独显 '
+         '72%NTSC FHD 预装Office 指纹版)银',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/7269871.html'}
+{'comments': '7400+',
+ 'name': '得峰（Deffad）A3 14英寸窄边框四核低功耗 超极轻薄办公笔记本电脑 娱乐游戏 银色-四核 '
+         '四核X5-Z8350/4G内存64G存储',
+ 'price': '978.00',
+ 'url': 'https://item.jd.com/1298930257.html'}
+{'comments': '2.4万+',
+ 'name': '联想IdeaPad330c-15八代酷睿I5/I7性能游戏笔记本电脑 轻薄本超薄本商务办公本手提电脑 '
+         '标配[I7-8550U/4G/1TB/2G独显] 小新潮5000升级 新款黑色[送正版office',
+ 'price': '4699.00',
+ 'url': 'https://item.jd.com/26498549640.html'}
+{'comments': '2.1万+',
+ 'name': '惠普（HP）EliteBook 745G5 14英寸轻薄笔记本电脑（锐龙5 PRO 2500U 8G 256SSD Win10 FHD '
+         'Office一年上门）',
+ 'price': '4799.00',
+ 'url': 'https://item.jd.com/7588521.html'}
+{'comments': '8700+',
+ 'name': '联想ThinkPad E485（01CD）14英寸笔记本电脑（锐龙5-2500U 8G双通道 256GSSD FHD Win10）黑色',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/100000060090.html'}
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480（40CD）英特尔8代酷睿14英寸轻薄笔记本电脑（i5-8250U 8G 512GSSD 2G独显 '
+         'FHD）冰原银',
+ 'price': '6499.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDA1NDM4MzguaHRtbA&log=grgawL3lLYPYtnGo-5zRipossY74B-viVSdcGNrnWKwcXEGa6jOUBZxF9Ay0hdPcdqUvNPirzoFP1NThKaknn5CGir0x0msFiKPMzQ9Sb4eHtkgfYlz6cOOPnjHppjjJ8QMcWWT37EJHfYfaQzP0AgNUgZUh74BeeL5HRLJrR6R-uWdmsqZKOtAvKPZrGujA3Ae3BBvyo7d5g2sahes5tVFWgmH66Y1h1cP6uv9e-qfl5lP1VR2AskhrCNxHDRbzNHiPibnyjgCr_FWy6odBdvlcJRWTUnMZnwrdGo7r9UKMgKwuaU1CI4att_09Rt4PRdmXM55Lizj37t--C0f_KJt1Tvgq1lcrCQXx3zr8KervY2Q4A_6zhURzv8SuCCZCRaZ7DHGQ02P-8Y8n0p372OffNnsvDtXaUAH-UYwu7Aql6gPYQoE0Uo4_0oNpqyptHJLQ_qWcrZXUlEIKC6peHxd5nMivl6heI51cRkIrc0Q79EoNCBjcLvq4ATVvVSzhp07-rNadWxz6p1GKhEmZkg&v=404'}
+{'comments': '8万+',
+ 'name': '戴尔(DELL)成就3470高性能商用办公台式电脑整机(八代i5-8400 8G 1T 四年上门售后 键鼠 WIFI 蓝牙)21.5英寸',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/7108222.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSDPCIe '
+         'MX150)轻奢灰',
+ 'price': '4998.00',
+ 'url': 'https://item.jd.com/100000863175.html'}
+{'comments': '5.4万+',
+ 'name': '武极 i7 8700/华硕GTX1060-6G/240G 游戏台式吃鸡电脑主机/DIY组装机',
+ 'price': '4996.00',
+ 'url': 'https://item.jd.com/1555771170.html'}
+{'comments': '13万+',
+ 'name': '联想(Lenovo)小新潮7000 14英寸轻薄笔记本电脑(I5-8250U 8G 256G PCI-E SSD UMA '
+         '正版Office)银',
+ 'price': '4599.00',
+ 'url': 'https://item.jd.com/100000117782.html'}
+数据解析
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 128GSSD+1T 2G独显 '
+         'FHD）银',
+ 'price': '6799.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NjA5Lmh0bWw&log=B7Q4MW_mW6bi5kvtSZmK-SBkLgKyeHvhY3Eyd_Y2CknG9TjR-a4-Ztwe_BCjJlrTIBM7Wr9m1WuCJXc_PLZ14t2b7ptmHnGJfrRcyq2NnLmb2pNPbgpeHWi_kj1EwAMvPnC3m9nUCBeDZYiu1naGMAjPeLLXWAWbHWz5fwd0BiXM-Uh9K2oYWk9n8I_YXgyeGrctlsL8l2oQ36Q1P8Z41z7iWlADOdMVSudxlRe0gqAwl165I7BQFqDnx1Ro-y1bZeQm5LaZkR1frwWV3_uyByGZnFagxnY7Z75C6aB8m1aMSBVLVdEx1wcVdk-tPNi1Rd-wm1xr5NAtzE9U7zf8OqCqQaDCpFGgUsU-CxbIJmcBu9uuDk5wsNBClKpqEuhs6JZ-q0kzuGJekDSZfXvd3LQCJZ0cdRm5_9q12i9TCrRUeC3B0AKIFmgA3nRyJwXiRRLXNxdFnd_hMkqaVAr7EK8-cHseFViaVgUHRFXoi-1A1DIdcLMQCggzaUXmOpwWhIN71699hugWHSwU9qB7pQ&v=404'}
+{'comments': '11万+',
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 256G FHD IPS 正版Office）冰河银',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/7512626.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)扬天M5200k 商用办公台式电脑整机（AMD A6-8570 4G 500G 集成 WIN10 '
+         '四年上门）19.5英寸',
+ 'price': '2488.00',
+ 'url': 'https://item.jd.com/7172418.html'}
+{'comments': '11万+',
+ 'name': 'Apple MacBook Air 13.3英寸笔记本电脑 银色(2017款Core i5 处理器/8GB内存/128GB闪存 '
+         'MQD32CH/A)',
+ 'price': '6488.00',
+ 'url': 'https://item.jd.com/5225346.html'}
+{'comments': '500+',
+ 'name': '联想扬天商务本v310-15超薄本商务办公本娱乐便携家用影音学生双核笔记本电脑采购英特尔N4000 标配：4G内存+500G大硬盘 集显 '
+         '15.6英寸 银灰色 正版win10',
+ 'price': '2319.00',
+ 'url': 'https://item.jd.com/32457565496.html'}
+{'comments': '1900+',
+ 'name': '宏硕 酷睿i5-8400/I7四核 /送显示器/GTX1060独显/吃鸡游戏台式机DIY组装电脑主机 电脑整机 套餐二 '
+         '酷睿i7/16G/GTX1060独显',
+ 'price': '3599.00',
+ 'url': 'https://item.jd.com/32972768194.html'}
+{'comments': '6.9万+',
+ 'name': 'Apple MacBook Pro 13.3英寸笔记本电脑 银色 2018新款（四核八代i5 8G 256G固态硬盘 '
+         'MR9U2CH/A）',
+ 'price': '12588.00',
+ 'url': 'https://item.jd.com/7629508.html'}
+{'comments': '4.8万+',
+ 'name': '联想ThinkPad E480（2XCD）14英寸轻薄窄边框笔记本电脑（i3-7020U 4G 500G FHD Win10）银',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/8596169.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSD PCIe MX150 '
+         ')复古金',
+ 'price': '5299.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDEwNDU1MTQuaHRtbA&log=B7Q4MW_mW6bi5kvtSZmK-SBkLgKyeHvhY3Eyd_Y2CklEGovm17XMV5MnlsHe3LQdtNVm9saTGAjGITbQ4BOXAR9Ziy6kJgn8JYn72SKFEX-lrPr192xfXPIV3gbcn4W-t6zRqN9vEKol8VGWUJ7F1A3yf3JJZlYOZmrIvRtug0COPJie5wQwvneJnaA1Zk2_t1Kt_7S99bSx_VbRmIM3BoUFnRsi0nBeYz0SLy2jE8ZxNLhb8wKSU7iZ9eGJ7nRJ_mhk9hc5C-5czbVjikawpE0gyvt8neHO_jvXhMoRUB3Ky3PpcxH1H7mEQbJDa8VXiT3kVfNmLd_h_T9j4s3814_5AoymtigZui3ulX-btvpX4G-fTspWCGTFJqjZFvVbQbKYfylB5nlmV-HvH6YcydfiEZ54O2spf2Kaq-xN-8ICFC-PS8cJzIO_3mrJO2H0_x5nEz7EUl3WxMO7IHUltgBE8Nd9wT-zaPxgSgLm6TI5kPy8RkanrbfUowfgFmusV713e4K3jWlUlhKWJAH5hQ&v=404'}
+{'comments': '5.7万+',
+ 'name': '戴尔DELL灵越飞匣14.0英寸便携笔记本电脑(i5-7200U 4G 500G R520 2G独显 Win10)黑',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/100000011363.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（0VCD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 128GSSD+500G '
+         '2G独显）',
+ 'price': '5499.00',
+ 'url': 'https://item.jd.com/6072622.html'}
+{'comments': '2900+',
+ 'name': '华为（HUAWEI） 荣耀笔记本MagicBook 14英寸轻薄便携学生本办公商务超薄本超极本电脑 '
+         '锐龙版AMD+8G+256G集显（冰河银）',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/31204952898.html'}
+{'comments': '4700+',
+ 'name': '天宝（T-bao） R8 15.6英寸超薄游戏笔记本电脑 便携商务办公轻薄本 全高清窄边框学生超极本 银色 6G内存128G固态硬盘 '
+         'N3450 四核CPU',
+ 'price': '1288.00',
+ 'url': 'https://item.jd.com/17928948059.html'}
+{'comments': '4600+',
+ 'name': '华硕（ASUS）顽石超薄本A480 酷睿i3轻薄家用影音学生固态独显超极本商务办公手提游戏笔记本电脑 '
+         'i3-7100U/8G/500G+128G固态',
+ 'price': '3699.00',
+ 'url': 'https://item.jd.com/20164371186.html'}
+{'comments': '400+',
+ 'name': '壹号本（ONEMIX2S）碟中谍联名限量款 酷睿8100Y 7英寸口袋笔记本电脑平板电脑二合一预售 黑色',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/35175058740.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（04CD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256SSD '
+         'Office）冰原银',
+ 'price': '5099.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NTgzLmh0bWw&log=B7Q4MW_mW6bi5kvtSZmK-SBkLgKyeHvhY3Eyd_Y2CkkqzjV4N2kOZtOLwa_5zlFkK7LHjop3IOGyjABOWDcpb0Hrz_N1ltObmPq-L2aEg8TklwOEE6E7pWFlxuS77wkPk5Wyk9b15DAzDKswIvhDaqJLTNrcIsY8BuKT89XLJHrUE26xtL4qFZyGBwuQhHeYqU-4G9C4R5ofAvOkXOxbXBIgGSVXLCQhXOsGNY4p6UA5gqSe0b-meuspJRgBvNmkKPFYgk4Oea2RxxS4bi_cuaqTJShtFk6Zm-FElsJZcQqDMown36kibJmWHaSnE0aLD0IG364y4iTF202aisJrJWcpriOpWmSlFxr4PzMhRmIe-KuoWmECUSDa0hS3KA4Url60KXXvZ5VFp6ERGglZ0mA4n2vaH1Dc5i60cUrigojz73scm0mij_D5yySw-jyGcr9ZkH_kDFha418X6iXdUOCi1Gi3SNwQhc3QS_U6n49HqEXXXOMq48qbYVWmT5iKssjxVU9TBPrVjAUIXe_n7Q&v=404'}
+{'comments': '1800+',
+ 'name': '宏碁（acer） 官方旗舰店A315轻薄便携学生商务办公宏基笔记本电脑15.6英寸游戏本手提2G独显 2G独显 标 '
+         '配：A4/4G/128G固态',
+ 'price': '2699.00',
+ 'url': 'https://item.jd.com/27377066587.html'}
+{'comments': '2.9万+',
+ 'name': '联想IdeaPad330-15新一代酷睿I3超性能手提笔记本电脑超薄本游戏轻薄本办公商用本学生本 新一代酷睿i3/4G/128G/定制 '
+         'W10 银色 15.6英寸[送正版office]',
+ 'price': '2899.00',
+ 'url': 'https://item.jd.com/26395831445.html'}
+{'comments': '14万+',
+ 'name': '小米(MI)Air 13.3英寸全金属超轻薄笔记本电脑(i5-8250U 8G 256G PCIE SSD MX150 2G独显 '
+         '72%NTSC FHD 预装Office 指纹版)银',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/7269871.html'}
+{'comments': '7400+',
+ 'name': '得峰（Deffad）A3 14英寸窄边框四核低功耗 超极轻薄办公笔记本电脑 娱乐游戏 银色-四核 '
+         '四核X5-Z8350/4G内存64G存储',
+ 'price': '978.00',
+ 'url': 'https://item.jd.com/1298930257.html'}
+{'comments': '2.4万+',
+ 'name': '联想IdeaPad330c-15八代酷睿I5/I7性能游戏笔记本电脑 轻薄本超薄本商务办公本手提电脑 '
+         '标配[I7-8550U/4G/1TB/2G独显] 小新潮5000升级 新款黑色[送正版office',
+ 'price': '4699.00',
+ 'url': 'https://item.jd.com/26498549640.html'}
+{'comments': '2.1万+',
+ 'name': '惠普（HP）EliteBook 745G5 14英寸轻薄笔记本电脑（锐龙5 PRO 2500U 8G 256SSD Win10 FHD '
+         'Office一年上门）',
+ 'price': '4799.00',
+ 'url': 'https://item.jd.com/7588521.html'}
+{'comments': '8700+',
+ 'name': '联想ThinkPad E485（01CD）14英寸笔记本电脑（锐龙5-2500U 8G双通道 256GSSD FHD Win10）黑色',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/100000060090.html'}
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480（40CD）英特尔8代酷睿14英寸轻薄笔记本电脑（i5-8250U 8G 512GSSD 2G独显 '
+         'FHD）冰原银',
+ 'price': '6499.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDA1NDM4MzguaHRtbA&log=B7Q4MW_mW6bi5kvtSZmK-SBkLgKyeHvhY3Eyd_Y2CkmIJUfQWV_ohR4nzdluzkWO1pX2CXuNpS5axbAkcyKtMKet4EP_i2qDBXjM5DiDZd8K5VYg2qJ0_ogqd3CGl298AfBWs3DldanNgHO3b1F55HF-B8V1xo6MUgGstYt3ORikvNavPA5uH7VX_peWh1y6AD_HSgSN-MUhG1WTbkfOa4H5QWkmTkfic1MdZBRa4s8-SM3_aYTz4yFAbSCKd9ZEmFKlAKgXQ1ifW8pMBhT6hRwc-nldNQRXavJ-s_FIzWVDsTOKw5hJ92MWL11LM4KX4OUpxn0F2YT4zPJSYs_KTQnhWsVNbzY-3JN4t8X5BqNPBkygjPVjo51cNsNgrezbyrLBmfJrQTQDQSFK9YzonUZY79_hYRyIFNm1m07xIingCuZU5klcnfgk1g2Cqkvfagn7VCAEqXnzyE71-fBRUv-G1gp9lkfcea2f7YqElFEH34WDkStTYxSCwLHpIR6fC4-NfQNaGCM5kPeIiegcLw&v=404'}
+{'comments': '8万+',
+ 'name': '戴尔(DELL)成就3470高性能商用办公台式电脑整机(八代i5-8400 8G 1T 四年上门售后 键鼠 WIFI 蓝牙)21.5英寸',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/7108222.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSDPCIe '
+         'MX150)轻奢灰',
+ 'price': '4998.00',
+ 'url': 'https://item.jd.com/100000863175.html'}
+{'comments': '5.4万+',
+ 'name': '武极 i7 8700/华硕GTX1060-6G/240G 游戏台式吃鸡电脑主机/DIY组装机',
+ 'price': '4996.00',
+ 'url': 'https://item.jd.com/1555771170.html'}
+{'comments': '13万+',
+ 'name': '联想(Lenovo)小新潮7000 14英寸轻薄笔记本电脑(I5-8250U 8G 256G PCI-E SSD UMA '
+         '正版Office)银',
+ 'price': '4599.00',
+ 'url': 'https://item.jd.com/100000117782.html'}
+数据解析
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480 英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 128GSSD+1T 2G独显 '
+         'FHD）银',
+ 'price': '6799.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NjA5Lmh0bWw&log=28qPLSRFk3vgr63utHhF1gmCXBKmlnBXZ1FlXksl_0soPQzO2Bk2Fvuj2P45kagQlOiCUnQhjRHwA-awbPm1vanH3W0-0JoHDq8KElAIHcGpGAExFBupiCbkElHStZQqk9GK0vmrlHRCT1SmOmh2gevUvyZdAcJLzhn1oTAUnVkcdeizOwDIKfe8eLCibia1QL3g5aNhz_0PNgwopJ-iemrFOq1-QArl5cAeWXM4AfwC7J8un12Ln6rs0nzWoJLLQ0XiJSHZq5HAmpDo87_aMLZBmAZbbMsinXJnG1cI5w6tupr32jBBSJmFs5FUegv2B5QkqH9Ax-24zQ2_zChHlZ18mYI0gtZUUFR_AISXDoj_EdSTQjellUIu8UQcOVWOZUmVlaYEj9CCf_ZBavVPQz2iwa-EPxXBdIV2yrxNdyR3_lTcOaEJG6xj7lxTD9gtv-ZRX1BthwDdGuvvFQBQsnskILMNSYBISd4CvJua42715BTXY7dLg2GFrqBpcZszVeFh0VS_qhapXGyX3CMCbA&v=404'}
+{'comments': '11万+',
+ 'name': '荣耀MagicBook 14英寸轻薄窄边框笔记本电脑（AMD锐龙5 8G 256G FHD IPS 正版Office）冰河银',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/7512626.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)扬天M5200k 商用办公台式电脑整机（AMD A6-8570 4G 500G 集成 WIN10 '
+         '四年上门）19.5英寸',
+ 'price': '2488.00',
+ 'url': 'https://item.jd.com/7172418.html'}
+{'comments': '11万+',
+ 'name': 'Apple MacBook Air 13.3英寸笔记本电脑 银色(2017款Core i5 处理器/8GB内存/128GB闪存 '
+         'MQD32CH/A)',
+ 'price': '6488.00',
+ 'url': 'https://item.jd.com/5225346.html'}
+{'comments': '500+',
+ 'name': '联想扬天商务本v310-15超薄本商务办公本娱乐便携家用影音学生双核笔记本电脑采购英特尔N4000 标配：4G内存+500G大硬盘 集显 '
+         '15.6英寸 银灰色 正版win10',
+ 'price': '2319.00',
+ 'url': 'https://item.jd.com/32457565496.html'}
+{'comments': '1900+',
+ 'name': '宏硕 酷睿i5-8400/I7四核 /送显示器/GTX1060独显/吃鸡游戏台式机DIY组装电脑主机 电脑整机 套餐二 '
+         '酷睿i7/16G/GTX1060独显',
+ 'price': '3599.00',
+ 'url': 'https://item.jd.com/32972768194.html'}
+{'comments': '6.9万+',
+ 'name': 'Apple MacBook Pro 13.3英寸笔记本电脑 银色 2018新款（四核八代i5 8G 256G固态硬盘 '
+         'MR9U2CH/A）',
+ 'price': '12588.00',
+ 'url': 'https://item.jd.com/7629508.html'}
+{'comments': '4.8万+',
+ 'name': '联想ThinkPad E480（2XCD）14英寸轻薄窄边框笔记本电脑（i3-7020U 4G 500G FHD Win10）银',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/8596169.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSD PCIe MX150 '
+         ')复古金',
+ 'price': '5299.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDEwNDU1MTQuaHRtbA&log=28qPLSRFk3vgr63utHhF1gmCXBKmlnBXZ1FlXksl_0ueOw9QMaEWszpQd-DAptRmu5B52pZIGc6wHPVS-U30K5aEEBn3GRQJOOsZIfHn-TPt62ddTYMuoHJc_YNVb7Fw8Pr2fZUH1Fay9hbX3INvS-jSY_sLBBtlAZ2HCMxuwQdKqPkYtRiTSqRzcr4drSsaN7AnirtDMnE-MKUj2K0_g1wld1se_ihf8MxmezUD6eUhvJcDViu6mmO8tr2UN_fr1WHIcwaLReohthxYbRn715UGBn40BDZUY_KLDVKDH7pNeUxkkL0715KTZXU8G5A7dU-zG26q-S1LrRyDCmk90TLWH6TfM5E1VzAe4ABJOXUl6WX1NBFm5iIGIIbvyKcujkLHC5_pvkK0ZiAtNAu1x1a2FMoYvYi8wJNPBcMZ7QG_sIDR2fgrNLOBmBTjtsHimgydZiTtQ3nrowhQqP4P3w0gaHPTF3AxmtEd63tZ08aRXcsv_7N-XveUsdC2qfuHCeMFomOBW2ePv_9li3lhzA&v=404'}
+{'comments': '5.7万+',
+ 'name': '戴尔DELL灵越飞匣14.0英寸便携笔记本电脑(i5-7200U 4G 500G R520 2G独显 Win10)黑',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/100000011363.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（0VCD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 128GSSD+500G '
+         '2G独显）',
+ 'price': '5499.00',
+ 'url': 'https://item.jd.com/6072622.html'}
+{'comments': '2900+',
+ 'name': '华为（HUAWEI） 荣耀笔记本MagicBook 14英寸轻薄便携学生本办公商务超薄本超极本电脑 '
+         '锐龙版AMD+8G+256G集显（冰河银）',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/31204952898.html'}
+{'comments': '4700+',
+ 'name': '天宝（T-bao） R8 15.6英寸超薄游戏笔记本电脑 便携商务办公轻薄本 全高清窄边框学生超极本 银色 6G内存128G固态硬盘 '
+         'N3450 四核CPU',
+ 'price': '1288.00',
+ 'url': 'https://item.jd.com/17928948059.html'}
+{'comments': '4600+',
+ 'name': '华硕（ASUS）顽石超薄本A480 酷睿i3轻薄家用影音学生固态独显超极本商务办公手提游戏笔记本电脑 '
+         'i3-7100U/8G/500G+128G固态',
+ 'price': '3699.00',
+ 'url': 'https://item.jd.com/20164371186.html'}
+{'comments': '400+',
+ 'name': '壹号本（ONEMIX2S）碟中谍联名限量款 酷睿8100Y 7英寸口袋笔记本电脑平板电脑二合一预售 黑色',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/35175058740.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（04CD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256SSD '
+         'Office）冰原银',
+ 'price': '5099.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS82MDc2NTgzLmh0bWw&log=28qPLSRFk3vgr63utHhF1gmCXBKmlnBXZ1FlXksl_0tOdjGHvqRfioi-mXiMzn6212Mp2mEQhOaDyoPvyGql2sGgQTuLVi63QXNht3ouDozRgM1KWOma4HDLMTlL0ll4jWUhy_TGvKrkHJ_fi3Yx_WPyGdC4rqUvCLpH27dhcq7T9FVemUH3MCynU0dkGFjasHCna45kzclXfQhfMpDqlD3XkHTyItHpbXYzUHI0-mekHrG8wXoacXU8rs-v4VaqH3Gs20FgunOw64RsUleq-C1G_r2Le0tn_PGkpu1ck9_bw5qSAIU2yVoh9gf8QqW9AM6cPLlFlBQLNFnMjnjG94X4haELR10QOlWn6YJNBxclmhvB80tCrFsAewVWjxMM2ALq3w7cXnrEccgg7l05ChmzPL-d7Mmlt2P1Pue4m5SdUMEH16ctbjLEMbzMm6cZA38rycD0zl3cKj3V1Ck8iFBW05NfDOfys5bVfN7gXiw9cFBDYatl__r_K6v3OLuYuft5pRwytXuJ2esOWfjbgw&v=404'}
+{'comments': '1800+',
+ 'name': '宏碁（acer） 官方旗舰店A315轻薄便携学生商务办公宏基笔记本电脑15.6英寸游戏本手提2G独显 2G独显 标 '
+         '配：A4/4G/128G固态',
+ 'price': '2699.00',
+ 'url': 'https://item.jd.com/27377066587.html'}
+{'comments': '2.9万+',
+ 'name': '联想IdeaPad330-15新一代酷睿I3超性能手提笔记本电脑超薄本游戏轻薄本办公商用本学生本 新一代酷睿i3/4G/128G/定制 '
+         'W10 银色 15.6英寸[送正版office]',
+ 'price': '2899.00',
+ 'url': 'https://item.jd.com/26395831445.html'}
+{'comments': '14万+',
+ 'name': '小米(MI)Air 13.3英寸全金属超轻薄笔记本电脑(i5-8250U 8G 256G PCIE SSD MX150 2G独显 '
+         '72%NTSC FHD 预装Office 指纹版)银',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/7269871.html'}
+{'comments': '7400+',
+ 'name': '得峰（Deffad）A3 14英寸窄边框四核低功耗 超极轻薄办公笔记本电脑 娱乐游戏 银色-四核 '
+         '四核X5-Z8350/4G内存64G存储',
+ 'price': '978.00',
+ 'url': 'https://item.jd.com/1298930257.html'}
+{'comments': '2.4万+',
+ 'name': '联想IdeaPad330c-15八代酷睿I5/I7性能游戏笔记本电脑 轻薄本超薄本商务办公本手提电脑 '
+         '标配[I7-8550U/4G/1TB/2G独显] 小新潮5000升级 新款黑色[送正版office',
+ 'price': '4699.00',
+ 'url': 'https://item.jd.com/26498549640.html'}
+{'comments': '2.1万+',
+ 'name': '惠普（HP）EliteBook 745G5 14英寸轻薄笔记本电脑（锐龙5 PRO 2500U 8G 256SSD Win10 FHD '
+         'Office一年上门）',
+ 'price': '4799.00',
+ 'url': 'https://item.jd.com/7588521.html'}
+{'comments': '8700+',
+ 'name': '联想ThinkPad E485（01CD）14英寸笔记本电脑（锐龙5-2500U 8G双通道 256GSSD FHD Win10）黑色',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/100000060090.html'}
+{'comments': '3.9万+',
+ 'name': '联想ThinkPad 翼480（40CD）英特尔8代酷睿14英寸轻薄笔记本电脑（i5-8250U 8G 512GSSD 2G独显 '
+         'FHD）冰原银',
+ 'price': '6499.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDA1NDM4MzguaHRtbA&log=28qPLSRFk3vgr63utHhF1gmCXBKmlnBXZ1FlXksl_0u_0E5Wz03yhPIgtk52i4aVwV8SiBE5y9bHzIFeAWU_AFwMXMx23wkfHv5RTSsWUf0PpDDHdpt4xmppnI9Tgh_Vemu7oQEtIGgu5VurGIvDY23OlqviWmfpy108neaOJlYlgit7EBEs0kYFgbjPNeP69v0rqpNBSx0GRBhrezBo9j4xJa1qpFq2ml9ToqptosCmBOnzvuHHgqXepISZ2kX6bzch9iSvwUVI_HjeQcTRburtegPPw6bt2LgrCiOojSGEx40awNUMp9O5nYAY2wnilbthRdkCz5ElcscWrrsz-KEKW5Ov3qzzUnG9HjnAxPuuebUsBOp414i01_xSUBihSh6uhR9dpJR5Ap_6Q9fC8ca4vTn8-ZyJrVvZkjLQ-xVTcWm3pCwhSKJpcZ6pAh0qBwSNLRgARvzpj8QKLN-CvnTUWfMnFKEYzw_CJItXvqyXcpbdWt-xuwh1CwxukDW_DCTQBJ89viuEpICFrjFH2Q&v=404'}
+{'comments': '8万+',
+ 'name': '戴尔(DELL)成就3470高性能商用办公台式电脑整机(八代i5-8400 8G 1T 四年上门售后 键鼠 WIFI 蓝牙)21.5英寸',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/7108222.html'}
+{'comments': '2.5万+',
+ 'name': '联想(Lenovo)小新Air13.3英寸超轻薄笔记本电脑(英特尔酷睿i5-8265U 8G 256G SSDPCIe '
+         'MX150)轻奢灰',
+ 'price': '4998.00',
+ 'url': 'https://item.jd.com/100000863175.html'}
+{'comments': '5.4万+',
+ 'name': '武极 i7 8700/华硕GTX1060-6G/240G 游戏台式吃鸡电脑主机/DIY组装机',
+ 'price': '4996.00',
+ 'url': 'https://item.jd.com/1555771170.html'}
+{'comments': '13万+',
+ 'name': '联想(Lenovo)小新潮7000 14英寸轻薄笔记本电脑(I5-8250U 8G 256G PCI-E SSD UMA '
+         '正版Office)银',
+ 'price': '4599.00',
+ 'url': 'https://item.jd.com/100000117782.html'}
+访问超时了，哈哈哈
+数据解析
+{'comments': '2.9万+',
+ 'name': '惠普（HP）245 G6 14英寸笔记本电脑（E2-9000e 4G 500G Win10 一年上门）黑灰银色',
+ 'price': '1999.00',
+ 'url': 'https://item.jd.com/4786909.html'}
+{'comments': '2.9万+',
+ 'name': '惠普（HP）246 G6 14英寸笔记本电脑（i5-7200U 4G 500G 2G独显 Win10 一年上门）黑灰银色',
+ 'price': '3499.00',
+ 'url': 'https://item.jd.com/4786871.html'}
+{'comments': '400+',
+ 'name': '戴尔（DELL） 灵越3000系列 笔记本电脑 游戏商务办公 双核15.6英寸轻薄本 商务雅黑 E2-9000/4G/128G/官方标配',
+ 'price': '2499.00',
+ 'url': 'https://item.jd.com/26503579960.html'}
+{'comments': '5400+',
+ 'name': '小米（MI）Air12.5英寸笔记本电脑 金属超轻薄便携学习游戏办公本 手提电脑全高清屏 小米笔记本银色-官方标配 '
+         '【12.5英寸】M3-7Y30-4G-128G',
+ 'price': '3528.00',
+ 'url': 'https://item.jd.com/11282259959.html'}
+{'comments': '500+',
+ 'name': 'ThinkPad 联想 E580 15.6英寸窄边框笔记本电脑（i5-8250U 8G 2G独显 128G+500G ）28CD 黑色 '
+         'FHD全高清 正版Office+Win10',
+ 'price': '5999.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8zMTE3MTE0MjY4OC5odG1s&log=P5nb_gerry4aVLKy8mJTOm3KMtu5r0Sk7twPyojA0E0HF3ZFWYFghZ1ZCujl_EVL1CFTbnKYiq8HFlqKNmgQswYzz5yzWB7_l6Z10XRKHQUeMrhublaxZnf60Tt0e-UYlUEYVZnG7ej30P02TXci5u_veb2OrhC66hNuOqKp0Sh3m0OE4iquTr2nWnUYuxjtPo5eJyXVyNPzNnbUYkLauk1zSV2KsP8DOO2XSmO_yEfdciqv8RRSnm15RnD77IzjtZnlH_c5P5xIxPfnLQ8-JJ2j8PV4Z6pGccXG7_ATdGjKTEjmMazDLwe_Va2l8vfJEaunIPazCdusSJV1vH3x-ohHPYciwLDq4we6wZx_9nSbk6hKn24cEuC_katzj8mjGh-KTS1ZlrEIaS5i2sbmq1rrS-SexBZXG32JGFIPVt5q0MEX8ThvhCWrO8-JJJMORTVP059_Dwixm8tC7y83sOeDU_hCyTkAVek0BOsp6ikJ2cxz47nF2UMOjqI1CSYRRTMAjKt74R3Wrfo6_WCKoA&v=404'}
+{'comments': '14万+',
+ 'name': '小米(MI) Air 12.5英寸金属超轻薄笔记本电脑(Core M-7Y30 4G 128G 全高清屏 背光键盘 '
+         'Win10正版office)金',
+ 'price': '3599.00',
+ 'url': 'https://item.jd.com/6031883.html'}
+{'comments': '9000+',
+ 'name': '华硕（ASUS）笔记本电脑游戏轻薄商务超薄上网办公超级本F580手提15.6英寸laptop顽石年货 荣耀金 '
+         '【性价比】套餐二4G内存/1TB硬盘+120G固态',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/26677260358.html'}
+{'comments': '100+',
+ 'name': 'ThinkPad 联想 E580（1WCD）15.6英寸窄边框笔记本电脑（i5-7200U 8G 256G 正版Win10）黑色',
+ 'price': '4999.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8zMzUzMTIxNDk0MS5odG1s&log=P5nb_gerry4aVLKy8mJTOm3KMtu5r0Sk7twPyojA0E2hIolL4z3z5zw3Gxm9ksupVKpgfCLlNmZyNZxili6C8PubMAOcEihg9RN1R7YAZjRLpBp2774WSeSt5BP2dMa33mkSCttpzwWfKbaWSxTkuuEDaYSODdN6sjlU9qdSTzSANfJATWrb3LlKDlify4DiVukUvDxrJejcWiY4tXb6M-iaiTTW20dpcte6WYlphz_fJTlTArJZfAcbKk0SoLkTi8EIcilwi07FonV1QxKAC749nY2I6P4kGk1GhtzNTFs-Rin6INC_SHXlw73t3QFChwI3D7J-7dtqy-AAa83-Rn8RHqoE0woEtCy1Bhma2iAhDn9dF4MyqUDU6D9n2ADHCSZ4aR7I041nOQ3hN2TZhVKUijks8lYKwdcJMXo5L1xiRb1yQhPDImncNm3ROjbP_O_s6J3l7PL7HmGvjkDr68MwVgR0F9rqmJzvq-c-ESqHxXaeSRfr8YvNML7sUx1AQk8BqmJPca4MqVb2jyyu8w&v=404'}
+{'comments': '700+',
+ 'name': '联想笔记本电脑YOGA720/710 12.5/14英寸超轻薄商务办公PC平板二合一触控屏手提学生本 标配 i5-7200U 4G '
+         '256G 星河银',
+ 'price': '4799.00',
+ 'url': 'https://item.jd.com/34320218486.html'}
+{'comments': '3000+',
+ 'name': '华为笔记本 MateBook X Pro 13.9英寸轻薄本电脑触控屏金属超极本 深空灰 i7/16G/512G固态+MX150独显 '
+         '官方标配',
+ 'price': '12755.00',
+ 'url': 'https://item.jd.com/27116355741.html'}
+{'comments': '8300+',
+ 'name': '联想(Lenovo)IdeaPad330-15英寸酷睿i3独显手提商务办公学生轻薄笔记本电脑 超薄本 定制二 '
+         'i3-7020U/4G/1TB+120G 2G独显 15.6英寸 星空银',
+ 'price': '3499.00',
+ 'url': 'https://item.jd.com/23779976650.html'}
+{'comments': '1800+',
+ 'name': '宏碁（acer） 官方旗舰店A315轻薄便携学生商务办公宏基笔记本电脑15.6英寸游戏本手提2G独显 2G独显 '
+         '定制四:8代i5/8G/1T+128G',
+ 'price': '4099.00',
+ 'url': 'https://item.jd.com/38011702650.html'}
+{'comments': '7.4万+',
+ 'name': '联想ThinkPad 翼480（42CD）14英寸轻薄窄边框笔记本电脑（i7-8550U 16G 512GSSD 2G独显 '
+         'FHD）冰原银',
+ 'price': '8799.00',
+ 'url': 'https://item.jd.com/100000543872.html'}
+{'comments': '900+',
+ 'name': '戴尔（DELL）笔记本手提金属超极本13.3英寸灵越5370系列超轻薄便携商务办公学生游戏笔记本电脑 13.3英寸，金属超极本【俏皮粉】 '
+         '【性能版】i5/4G/128G/PCIE',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/30720925182.html'}
+{'comments': '8300+',
+ 'name': '惠普（HP） 【官方旗舰店 】王源星14系列微边框轻薄本笔记本手提电脑超薄本商务学生游戏【新品上市】 静谧银：【8代增强版】【IPS屏】 '
+         '星15:i5/8G/1T+128G/MX150大屏',
+ 'price': '5999.00',
+ 'url': 'https://item.jd.com/32421759213.html'}
+{'comments': '7300+',
+ 'name': '机械革命(MECHREVO) EX500游戏台式电脑主机（i5-8400 8G 128GSSD GTX1050*2G独显 三年上门）',
+ 'price': '4199.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cDovL2l0ZW0uamQuY29tLzczNjcyNzguaHRtbA&log=P5nb_gerry4aVLKy8mJTOm3KMtu5r0Sk7twPyojA0E1WLE9O_Z5RA5KukLrfJMaFXhdeSUhGb-0JSA01Bxz5betDhhLIoPF1m_w9AIQTW0HpU4r_p2rFgR8A8bDnUWrWoZxsOj0g_1wuD-Uve03W8X6LULvGVZ2Kq-uCfAu5KDo6sqFKKkXUEOxh03HukJTTsrUdn9cosP3iIt_88OFGmJdzamvMyFkQFHbrsh1Rde06V1ImmUlZMt3-NQFxLu3Fh7VTk1Rf8T8wM-gkpSkPKg7RhBJimRwsV3ezTp9ErIiWQp_rcZF0ovpoeNGFe4Cdx47iINs5KgVU1DESi--iv9ePyEFoV8aG9VyIRnYXDc7UQhdzNPKWJ4c5cD70MlvayMo7yu_U-GxTFZV8u0xOP2D5LUBrnIxxNyzgowU2yYs1iE2RCFK94tRHKnXZF2Q2Mwg4lmc46izCE9sYMVp-2WgJawQkqD5Fu3N8fQEbAczRu3nfk-KXy2g1jZUVzFbYkZL7TeUS-oFin9Eqv3L2tw&v=404'}
+{'comments': '2.1万+',
+ 'name': '惠普(HP) EliteBook 1050 G1 15.6英寸笔记本电脑(八代i7-8750H 8G 256SSD GTX1050 '
+         'MAX-Q 4G独显 100%sRGB)',
+ 'price': '9499.00',
+ 'url': 'https://item.jd.com/100001024587.html'}
+{'comments': '1200+',
+ 'name': '联想笔记本ThinkPad NEW S2 13.3英寸商务超极笔记本电脑轻薄本i5 银色款@20J3A00WCD 标配i5 '
+         '7200U/4G内存/256G固态硬盘',
+ 'price': '4499.00',
+ 'url': 'https://item.jd.com/10054488588.html'}
+{'comments': '500+',
+ 'name': '华为笔记本MateBook X 超薄本13英寸轻薄本微边框2K屏便携商务手提笔记本电脑指纹金属超极本 玫瑰金丨i5 '
+         '8G内存+256G固态',
+ 'price': '7188.00',
+ 'url': 'https://item.jd.com/30343694166.html'}
+{'comments': '8.9万+',
+ 'name': '荣耀MagicBook14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 256G MX150 2G独显 FHD IPS '
+         '正版Office）星空灰',
+ 'price': '5699.00',
+ 'url': 'https://item.jd.com/7602800.html'}
+{'comments': '500+',
+ 'name': '小米（MI） 笔记本Pro 15.6英寸金属超轻薄手提电脑 GTX1050 i5-8250U 8G 256G',
+ 'price': '6099.00',
+ 'url': 'https://item.jd.com/31816275590.html'}
+{'comments': '2.4万+',
+ 'name': '戴尔(DELL)灵越3670台式电脑整机(八代i5-8400 8G 128GSSD 1T 2G独显 WIFI 蓝牙 键鼠 '
+         '三年上门售后)23.6英寸',
+ 'price': '5199.00',
+ 'url': 'https://item.jd.com/7306975.html'}
+{'comments': '100+',
+ 'name': '华硕（ASUS）旗舰店 灵耀S 2代 15.6英寸三面窄边框轻薄笔记本电脑 冰钻金 i5-8250U/ 8G/512G/MX150',
+ 'price': '5699.00',
+ 'url': 'https://item.jd.com/32241114070.html'}
+{'comments': '30+',
+ 'name': '联想ThinkPad S3锋芒（00CD）英特尔酷睿i5 14英寸轻薄笔记本电脑（i5-8265U 8G 512GSSD FHD）钛度灰',
+ 'price': '6499.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwMDI1ODQ3NzAuaHRtbA&log=P5nb_gerry4aVLKy8mJTOm3KMtu5r0Sk7twPyojA0E2en81-nFhErcLi-GhyiWh4qvF876hX2p9S-vdWp_3OfSihX_Wbp_kUFNQd1ck0k_7pr0xohYCQHboc8DI7A04LoHkM6ZTZr9-FUNtvOpJHh6iesoTqBDqsEJycyYUdN3h0qrQDzMTayMJFObk27e3IZixLsLGd4iJwZTXs5vYk--BA_ghCAso9cCw1rEn7USx4VCTummJQ_k9lpL8F_a95Izonvx6ZQgq2NgExEggfMI6ZRHdmQ0YDY7QPb3ogyeJZabQHseCTi97ukF1XSY9dT1SD9wOxvxqlqcFoNXoHFO8qJu4-9HkL4mNcyNJtnrvoKZZyu3JHqoiisttsOmE6xe9QEsd4eRTcSeNu1NwTT2pm9cZ0yxsrHpc1mWjwoZZpO4rE6jasOgbKdKkpn6Fi3nT5SKEHfa-ZulLiw07vCfkFfe-ZjRaLYfbacXZ9njodOt-c_mmxs-X86dN038MJTC1W-qTEcwgQUd4jYF9NBQ&v=404'}
+{'comments': '1000+',
+ 'name': 'ThinkPad 联想 T480 14英寸商务轻薄手提笔记本电脑 3NCD标配@i5-7300u 8GB 500GB 原装标配 '
+         'Win10家庭版系统',
+ 'price': '5999.00',
+ 'url': 'https://item.jd.com/12279172906.html'}
+{'comments': '3800+',
+ 'name': '联想小新潮7000 年货节新款14/15.6英寸独显超薄本轻薄笔记本电脑超极本商用办公手提本 '
+         '15.6英寸【8G/2T+128固态】满血版 5系2G独显 荣耀银 窄边框 高清屏',
+ 'price': '4260.00',
+ 'url': 'https://item.jd.com/13647720073.html'}
+{'comments': '6100+',
+ 'name': '联想小新AIR 2018款14英寸超薄本八代I7四核增强版固态3轻薄便携手提笔记本电脑家用商务办公本 星河银 '
+         'i7-8565U/8G/512G 标配 满血版MX150 2G独显 win10',
+ 'price': '5999.00',
+ 'url': 'https://item.jd.com/27689294342.html'}
+{'comments': '2700+',
+ 'name': '戴尔（DELL） XPS13-9360 13.3英寸八代i5固态轻薄高清微边框女生办公笔记本电脑 3609银 :i5/8G/256G '
+         'SSD',
+ 'price': '7499.00',
+ 'url': 'https://item.jd.com/17305444863.html'}
+数据解析
+{'comments': '1800+',
+ 'name': '华为（HUAWEI）笔记本MateBook D 15.6英寸轻薄商务办公学生手提电脑游戏本王者荣耀 2018定制版 银i5 8G '
+         '128G+500G MX150 独显 office',
+ 'price': '5088.00',
+ 'url': 'https://item.jd.com/29017373701.html'}
+{'comments': '2100+',
+ 'name': '麦本本 （QRTECH）金麦5A 轻薄金属商务游戏笔记本电脑13.3英寸高清屏轻薄本手提 银灰色 intel 7代/8G/240G固态',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/23718658030.html'}
+{'comments': '6700+',
+ 'name': '华为笔记本MateBook D超薄本15.6英寸轻薄本商务办公学生手提便携笔记本电脑超极本 升级版｜银i5 8G 256G+1TB 独显 '
+         '豪华礼包套装',
+ 'price': '5388.00',
+ 'url': 'https://item.jd.com/28061291269.html'}
+{'comments': '5400+',
+ 'name': '华为笔记本 MateBook X 13英寸轻薄本电脑2K屏指纹金属超极本 玫瑰金 i5/8GB/256GB固态硬盘+标配扩展坞',
+ 'price': '6788.00',
+ 'url': 'https://item.jd.com/12943624329.html'}
+{'comments': '9800+',
+ 'name': '宏碁(Acer) 15.6英寸金属办公便携轻薄本笔记本电脑 炫6 A615(i5-8250U 4G 1T 标压MX150 2G独显 '
+         '全高清FHD)',
+ 'price': '3999.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS83MTc2MTQyLmh0bWw&log=W7nym-CuPZkAtdczVKIHTZaSZUsxLFeiVPDj0Htj1yzYEpq6ouHOIjLgXpvNbvrchdJw6mk9FwKuQMPccU-OFlDYUpE59KMvPPZEjc7znMRvbPm4x6ymTbj5-0P1qRzi4nBBGfGDmoJHV_kS8WNfuSv1iy-zyugSsAY-jfEusIJsMqEZ1QD9qbXmyZEjCP8YtLnOW8ZIwH7DPCPgsrrZGpsFc8WqlTEUtudjIPP3ePCznUFNCB7XOrdS_Ijl92T1UPlju2dQU-SKwPgUZwnwZ08SjkwndbhUxV4F1wGWs6cx1Dw0yM8KSx3-lX71VsJ0wNYr2Y0GAK5gdlLrJD8euhVR77NYgYjBcXAaH1cNnAeUGOuScd9SCMQDTde9UsVWBH4-CHPUFPSqCe5pHiB4nIKgrgdCbKlq3xauBcAz6qpiqns-ARqU2nHEtGdkjb5tpwlpQn5lEsul3aE29ETPpR8XuyWw5XmSBnrfekx2_vdTcOjVoyQFBS8GdlrUYbhMhF41FiVhjJfY_077BEa38Q&v=404'}
+{'comments': '4400+',
+ 'name': '戴尔（DELL） 旗舰店 灵越7580 15.6英寸酷睿八代轻薄IPS微边框2G独显笔记本电脑 '
+         '1525粉:i5/8G/混合硬盘/2G独显',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/15652808191.html'}
+{'comments': '6300+',
+ 'name': '联想笔记本电脑Yoga710/720/530 14英寸i5触摸屏超薄轻薄触控PC平板二合一超极本12 黑色定制：i5-7200U 8G '
+         '256G固态',
+ 'price': '4899.00',
+ 'url': 'https://item.jd.com/10459739521.html'}
+{'comments': '9900+',
+ 'name': '华硕（ASUS） 华硕顽石FL8000UF/Y5000笔记本电脑i7学生游戏本15.6英寸手提电脑 '
+         '星空灰i7-8550U/MX130-独显2G 8G内存/1T硬盘+256GSSD 套餐四',
+ 'price': '5197.00',
+ 'url': 'https://item.jd.com/12275775853.html'}
+{'comments': '8300+',
+ 'name': '【亮铂金键盘套装】微软（Microsoft）Surface Pro（第五代）二合一平板电脑笔记本（Core M3 4G 128G）',
+ 'price': '4988.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS83NjQ5OTk3Lmh0bWw&log=W7nym-CuPZkAtdczVKIHTZaSZUsxLFeiVPDj0Htj1yxLns_P3VlEoAAP_KoIdSS3JsI9S14zPbxYj5IC7SrKAmJSAzvleifMJYHNh6FnvoIh9Yy6h-4WxjmyXHg-HkVQT9CB0KgTulHYX6z_DHB5v9x6bvWlClzo5xpC5SQ78od0BGZbdJRt1167u14_bOM4e1Hql_erIgdIcn-vzyPzqmqy0BHEmVxl5PCP8vYdWRjQlyOGAuojq_i2ua1M1MYgt8MEueZLJA16TbooLmxepF_GbWW4uwtJ5k9PyAJke2e74-urJ2vCJP4GlzcjGf3X6YjTjdvlA9FeJ7py5GnemZ5GuN32F-brwN5jj2Ro3f2XfPOhYP6BFB3FS0yyQvkZEVUZ16Va2z4Kg2ThL8IaYBUTGMGNGhzJlHJZSjAydAHcyEFTKIHClqn-8MsoTjbGkMKuAtzgY2Mh9yv2_G6xfOTW_4T8A-fPGLthLZkxfmv9v_vnZgM1gHq4aRXMNoDa7t91X55YjiZAHgE_Wr7I0A&v=404'}
+{'comments': '6000+',
+ 'name': '戴睿（dere） R9s 15.6英寸超轻薄窄边框笔记本电脑 全新四核便携手提学生商务办公游戏上网本 银色 6G内存 128G固态',
+ 'price': '1798.00',
+ 'url': 'https://item.jd.com/31595170142.html'}
+{'comments': '1900+',
+ 'name': '华为笔记本 MateBook X Pro 13.9英寸轻薄电脑商务便捷手提超极本 灰色-i5/8G/256G固态+MX150独显',
+ 'price': '8388.00',
+ 'url': 'https://item.jd.com/39876457304.html'}
+{'comments': '3万+',
+ 'name': '华硕（ASUS）笔记本电脑超薄14英寸R417/E402轻薄本手提电脑超级本上网本学生办公 【热卖】N3450/4G/512G固态 红色',
+ 'price': '2899.00',
+ 'url': 'https://item.jd.com/10019904047.html'}
+{'comments': '800+',
+ 'name': '宏碁（acer） AN515宏基暗影骑士3游戏笔记本电脑 锐龙R5/i7吃鸡电脑游戏本 4G独显 R5锐龙 8G 256G+1T 定制版',
+ 'price': '5199.00',
+ 'url': 'https://item.jd.com/19290042855.html'}
+{'comments': '8300+',
+ 'name': '联想(Lenovo)IdeaPad330-15英寸酷睿i3独显手提商务办公学生轻薄笔记本电脑 超薄本 升级款 '
+         'i3-7020U/4G/120G固态 2G独显 15.6英寸 星空银',
+ 'price': '3299.00',
+ 'url': 'https://item.jd.com/14541537285.html'}
+{'comments': '1600+',
+ 'name': '联想（Lenovo） 扬天V110 15.6英寸商务办公笔记本电脑家用娱乐轻薄便携手提电脑Win10 N3350 4G 500G硬盘 '
+         'DVD 集显',
+ 'price': '2399.00',
+ 'url': 'https://item.jd.com/25673394058.html'}
+{'comments': '30+',
+ 'name': 'ThinkPad S1 Yoga（0DCD）13.3英寸触摸屏轻薄笔记本电脑超极本i5-8250u 【官方标配】8G内存 '
+         '256GSSD固态硬盘 FHD屏 背光键盘 雷电3 Win10',
+ 'price': '7099.00',
+ 'url': 'https://item.jd.com/11258548797.html'}
+{'comments': '3700+',
+ 'name': '联想（Lenovo）扬天M4000e(PLUS)商用办公台式电脑整机(I7-7700 16G 2T+256GSSD 2G独显WIN10 '
+         '4年上门)23英寸',
+ 'price': '7988.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS80MjcwMzg3Lmh0bWw&log=W7nym-CuPZkAtdczVKIHTZaSZUsxLFeiVPDj0Htj1yxo0HH7vcpmNZOuuB-Cth6mWTPK_B-i1c76NLlHIRMB0YUVdsUVpxF5YM2LWSlBoYm-RjxHAfh-_DdJS4RF-bqr3t4G1GedPhA2KCX9pObeMMeIL6tiZp-94binX2bJplTOW7Vs1VsHME0MDZWKnWZBEhYRenmZtM8rnJd4Ys4XP4p-REVL-K5c4KloGBnVLrDKJJfJeLTTzRbyoAoIAPryHEgul8hBx8zQovf9ZHjExYksoL65hkp_9Ru1sy9gElazL4zHuhFvL1eFGWW7kkLuxtRoFxL8agG1tpfq9d01D6FmuEd1XbSohP-bz27E73Ah0rBwYu_pZ03Yi_sHNe8SyeuWMSr-migWPncz1YAlBLHWQHnUBKXrHUEazGhtmOn7N4ePhgKqgzX7c8NUkFFNlvef5idtOKgZQumAR7Ty8ypzCFUz6iedFCv4RdMNiLI1Oz0UiuWXVFVzh4kcy8xtIK_bpKDOYFqLo-DDhaWGOQ&v=404'}
+{'comments': '1.5万+',
+ 'name': 'APPLE 苹果MacBook air苹果笔记本电脑13.3英寸超薄笔记本（套餐下单送大礼包） '
+         '标配+苹果原装鼠标套餐版（下单送超值大礼包） i5/8GB内存/256GB闪存【D42】',
+ 'price': '8588.00',
+ 'url': 'https://item.jd.com/11586487152.html'}
+{'comments': '3.1万+',
+ 'name': '华硕（ASUS） 金属超极本RX310/S4300轻薄便携商务办公超薄学生游戏手提笔记本电脑 旗舰店 玫瑰金/冰钻金【金属超极本】 '
+         '14.1英寸/I5/8/256G/2G独显',
+ 'price': '4999.00',
+ 'url': 'https://item.jd.com/11547179905.html'}
+{'comments': '200+',
+ 'name': '华为（HUAWEI）笔记本电脑 MateBook 13英寸 超轻薄本商务性能本手提2K全面屏 皓月银 I5 8G 256G固态 '
+         '独显【预订22号发货】',
+ 'price': '5399.00',
+ 'url': 'https://item.jd.com/40330510043.html'}
+{'comments': '4900+',
+ 'name': '华硕（ASUS） 灵耀S4300 14英寸2G独显金属超极本8代i5商务办公窄边框轻薄笔记本电脑 消光灰大屏版 '
+         '8G/1T+256G固态/2G独显',
+ 'price': '5299.00',
+ 'url': 'https://item.jd.com/28982984596.html'}
+{'comments': '4.8万+',
+ 'name': '联想ThinkPad E480（2WCD）14英寸窄边框笔记本电脑（i3-7020U 4G 500G  2G独显 Win10）黑',
+ 'price': '3799.00',
+ 'url': 'https://item.jd.com/8596151.html'}
+{'comments': '3300+',
+ 'name': '华硕（ASUS） 旗舰店 RX310 13.3英寸轻薄笔记本电脑 石英灰 配置二 i3-7100U/4G/256G固态/集显',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/15349800997.html'}
+{'comments': '400+',
+ 'name': '华为（HUAWEI） MateBook D 15.6英寸窄边框超轻薄商务办公游戏笔记本电脑2018 官方版 i7  8G '
+         '128G+1TB独显 银',
+ 'price': '5968.00',
+ 'url': 'https://item.jd.com/31214896982.html'}
+{'comments': '600+',
+ 'name': '戴尔台式机8g 3050MT商用台式机 i5主机台式电脑',
+ 'price': '3799.00',
+ 'url': 'https:https://ccc-x.jd.com/dsp/nc?ext=aHR0cHM6Ly9pdGVtLmpkLmNvbS8xODMxNzQ3MzU3NC5odG1s&log=W7nym-CuPZkAtdczVKIHTZaSZUsxLFeiVPDj0Htj1yw2FPXOHRO88rCGp7IXVkEjOGfsnIg6kVxiQrJLKRnhUvy_kUPMoRQ0Cjro0aIskWt7k26vLig4dvxmFoPB0aIFdHEa3BqlemkUq9P7_pnMozxnf-dBmMRMVVau6_oTo8qEBb16rFaYdJ514dxMtjNCOGYQ1J5UmMsvjebc2FI8PGjAeeIkpI6CNP6JifssiFJw87jSzIBsQbXWeHZCG5oovaHBXOYrPyJXo8V5WIwK7qeft63AsNz0HU943sZMXGurNB-vXWyXJoYsAhiVARN46TVpuDuFWkJ5FvGy5CtPmtxEk4s2w09wpATOYSLSTiomDYGPhfWptKKa0ZSsbyMFOFNUBDXSVbAVcr4a552O_xOshZh-i2F1-NIpwHfb2jfzrR2eaC34l1-TX7NlBWtO_eJCay4vMJA2dKEOwjvliX2dJLHXp4y6VG8qjBGAJuVsLIXM4c3uNnhICiZcZalBQ82VNVYU-PpyZCWgIH-cOQ&v=404'}
+{'comments': '1200+',
+ 'name': '联想笔记本ThinkPad E580（20KSA017CD）15.6英寸商务办公轻薄笔记本电脑i5 【官方标配】4G内存  '
+         '500G机械硬盘',
+ 'price': '4299.00',
+ 'url': 'https://item.jd.com/11050939983.html'}
+{'comments': '1700+',
+ 'name': '13.3英寸超轻薄商务办公学生家用手提翻转触屏二合一笔记本电脑超极本 【Intel四核 4G内存 256G固态】',
+ 'price': '2699.00',
+ 'url': 'https://item.jd.com/30421715832.html'}
+{'comments': '4.2万+',
+ 'name': '联想IdeaPad330c 14英寸酷睿I5/I7超高性能笔记本电脑320手提轻薄本商务本办公超薄本 定制I7-7500U 8G '
+         '1T+512G 银色 2G独显 全高清W10[送正版office]15',
+ 'price': '5698.00',
+ 'url': 'https://item.jd.com/27107642854.html'}
+{'comments': '100+',
+ 'name': '联想ThinkPad X1 carbon 2018款轻薄笔记本14英寸商务办公手提电脑超极本 09CD@i5-8250u 8G '
+         '256GSSD 高清屏 指纹识别 背光键盘  Win10',
+ 'price': '9999.00',
+ 'url': 'https://item.jd.com/30497478692.html'}
+{'comments': '1.7万+',
+ 'name': '三星（SAMSUNG）35X0AA-X08 15.6英寸轻薄笔记本电脑（i5-8250U 8G 1TB+128GSSD 2G独显 FHD '
+         'Win10）白',
+ 'price': '4399.00',
+ 'url': 'https://item.jd.com/8461429.html'}
+数据解析
+{'comments': '3200+',
+ 'name': '华为（HUAWEI） 荣耀笔记本电脑MagicBook 14英寸超薄学生商务办公超极本 '
+         '【新品】星空灰-AMD锐龙5/8G/256G+集显',
+ 'price': '3999.00',
+ 'url': 'https://item.jd.com/36189775324.html'}
+{'comments': '1.1万+',
+ 'name': '【京东秒杀】联想小新潮7000 年货节新款15.6英寸i5/i7固态硬盘超极本轻薄笔记本办公手提电脑 爆款I5-8250U 8G '
+         '512G-SSD纯固态 2G独显 FHD全高清屏 荣耀银',
+ 'price': '5499.00',
+ 'url': 'https://item.jd.com/30500546634.html'}
+{'comments': '500+',
+ 'name': 'ThinkPad 联想 NEW S2 2018（0HCD）13.3英寸轻薄商务笔记本电脑 （i5-8250U 8G 256GSSD '
+         'Win10）银色',
+ 'price': '5299.00',
+ 'url': 'https://item.jd.com/31241092821.html'}
+{'comments': '3800+',
+ 'name': '联想扬天V130（V110升级版）15.6英寸笔记本电脑 超轻薄游戏办公娱乐便携手提商务本 顶配升级：i5七代 8G内存 '
+         '1T+256G固态 AMD R5 2G独显 win10系统',
+ 'price': '4199.00',
+ 'url': 'https://item.jd.com/30394029827.html'}
+{'comments': '6000+',
+ 'name': '戴睿（dere） R9s 15.6英寸超轻薄窄边框笔记本电脑 全新四核便携手提学生商务办公游戏上网本 银色 6G内存 '
+         '64G固态+500G硬盘',
+ 'price': '1898.00',
+ 'url': 'https://item.jd.com/31595170143.html'}
+{'comments': '400+',
+ 'name': '联想ThinkPad 2018新款 P系列ibm P52S新款移动图形工作站笔记本商务办公手提电脑 5CD定制：i7 16G '
+         '256G+1T 图形显卡',
+ 'price': '12499.00',
+ 'url': 'https://item.jd.com/27107972438.html'}
+{'comments': '900+',
+ 'name': 'ThinkPad笔记本 联想 X280轻薄笔记本 12.5英寸高端商务办公手提笔记本电脑 经典黑色 1UCD@i3 7020u 4G '
+         '256GSSD',
+ 'price': '5199.00',
+ 'url': 'https://item.jd.com/10051460174.html'}
+{'comments': '6300+',
+ 'name': '华硕（ASUS） 超薄笔记本电脑i5独显超清屏灵耀S4200/S4300商务办公轻薄金属超极本 香槟金/i5-8250U/2G独显 '
+         '8G内存/256G/套餐七',
+ 'price': '4899.00',
+ 'url': 'https://item.jd.com/28106918880.html'}
+{'comments': '300+',
+ 'name': 'ThinkPad联想 E475系列 14英寸商务办公超薄笔记本电脑 A6-9500B 4G 500G 02CD Win10',
+ 'price': '2999.00',
+ 'url': 'https://item.jd.com/13763430385.html'}
+{'comments': '1.5万+',
+ 'name': '华硕（ASUS）灵耀笔记本电脑轻薄超薄商务办公上网超极本S4200手提14英寸laptop年货ips 【星空灰】套餐一 '
+         '4G内存/256G固态',
+ 'price': '4299.00',
+ 'url': 'https://item.jd.com/10920988710.html'}
+{'comments': '2.3万+',
+ 'name': '联想小新潮7000-14英寸i3金属超极本窄边框笔记本商务办公上网本手提轻薄便携学生游戏笔记本电脑 银色定制二:i3-8130U 4G '
+         '1T 128G 小新潮7000',
+ 'price': '3699.00',
+ 'url': 'https://item.jd.com/31812450318.html'}
+{'comments': '3.1万+',
+ 'name': '华硕（ASUS） 金属超极本RX310/S4300轻薄便携商务办公超薄学生游戏手提笔记本电脑 旗舰店 玫瑰金/冰钻金【金属超极本】 '
+         '14.1英寸I5/8G/128G/2G/定制',
+ 'price': '4699.00',
+ 'url': 'https://item.jd.com/11927632978.html'}
+{'comments': '200+',
+ 'name': '华为（HUAWEI） MateBook 13 超轻薄2K全面屏商务办公笔记本性能手提电脑超极本 皓月银 I7 '
+         '8+512固态+独显（预计22号后发',
+ 'price': '6399.00',
+ 'url': 'https://item.jd.com/40033909503.html'}
+{'comments': '1万+',
+ 'name': '联想Yoga720 12.5英寸新一代酷睿i5触摸屏超薄本二合一笔记本电脑手提轻薄触控超极本 傲娇银：i5-7200 4G 256固态 '
+         'W10',
+ 'price': '4798.99',
+ 'url': 'https://item.jd.com/28206354727.html'}
+{'comments': '8300+',
+ 'name': '惠普（HP） 【官方旗舰店 】王源星14系列微边框轻薄本笔记本手提电脑超薄本商务学生游戏【新品上市】 时尚金：【8代增强版】【IPS屏】 '
+         '爆款三：i5/8G/128G+1T/MX150',
+ 'price': '5799.00',
+ 'url': 'https://item.jd.com/27914580588.html'}
+{'comments': '8300+',
+ 'name': '惠普（HP） 【官方旗舰店 】王源星14系列微边框轻薄本笔记本手提电脑超薄本商务学生游戏【新品上市】 静谧银：【8代增强版】【IPS屏】 '
+         '配置四：i7/8G/128G+1T/MX150',
+ 'price': '6599.00',
+ 'url': 'https://item.jd.com/27956254519.html'}
+{'comments': '2200+',
+ 'name': '戴尔（DELL） 灵越7572-3745燃7000 15.6英寸窄边框独显超薄笔记本电脑 银色:16G/256G固态+1T定制',
+ 'price': '7199.00',
+ 'url': 'https://item.jd.com/13020040778.html'}
+{'comments': '1200+',
+ 'name': 'ThinkPad 联想R480 14英寸轻薄便携商务办公手提笔记本电脑 0VCD@i3-7代 4G内存 256G 集显 '
+         '【官方标配】原装单硬盘',
+ 'price': '3499.00',
+ 'url': 'https://item.jd.com/25377637526.html'}
+{'comments': '100+',
+ 'name': 'GPD pocket2代 7英寸口袋笔记本电脑 轻薄便携掌上笔记本电脑 M3-8100Y 8GB运行 128G硬盘',
+ 'price': '4199.00',
+ 'url': 'https://item.jd.com/37673283272.html'}
+{'comments': '3000+',
+ 'name': '戴尔（DELL） 灵越5370 13.3英寸8代酷睿四核超极本商务办公轻薄笔记本电脑 金属便携手提本 i5-8250U 2G独显 女神粉 '
+         '8G内存 256G固态 定制版',
+ 'price': '5099.00',
+ 'url': 'https://item.jd.com/27116419601.html'}
+{'comments': '4.2万+',
+ 'name': '联想IdeaPad330c 14英寸酷睿I5/I7超高性能笔记本电脑320手提轻薄本商务本办公超薄本 定制I5-8250U 8G 1TB '
+         '黑色 2G独显 全高清W10[送正版office]15',
+ 'price': '4299.00',
+ 'url': 'https://item.jd.com/26285412055.html'}
+{'comments': '2400+',
+ 'name': '联想(Lenovo)YOGA720 12.5英寸超轻薄触控笔记本电脑手提 天蝎灰 秒杀i5-7200U 8G 256G固态',
+ 'price': '5199.00',
+ 'url': 'https://item.jd.com/28471623939.html'}
+{'comments': '7300+',
+ 'name': 'YEPO 13.3英寸轻薄笔记本电脑 超薄便携商务办公游戏手提固态超极本 【热卖】6G内存/256G固态',
+ 'price': '1498.00',
+ 'url': 'https://item.jd.com/19434309993.html'}
+{'comments': '6200+',
+ 'name': '戴尔（DELL） 灵越飞匣3000 Ins3576 15.6英寸高清八代四核办公学生笔记本电脑独显2 G 15E-8525B 黑色 '
+         '四核I5-8250U 8G内存 1T机械+128G固态 定制版',
+ 'price': '4099.00',
+ 'url': 'https://item.jd.com/26328940646.html'}
+{'comments': '3800+',
+ 'name': '联想小新潮7000 年货节新款14/15.6英寸独显超薄本轻薄笔记本电脑超极本商用办公手提本 15.6英寸【8G/256G纯固态】豪华版 '
+         '5系2G独显 荣耀银 窄边框 高清屏',
+ 'price': '4099.00',
+ 'url': 'https://item.jd.com/13647720077.html'}
+{'comments': '1.2万+',
+ 'name': '戴尔（DELL） 金属超级本灵越5370 13.3英寸轻薄便携商务办公手提笔记本电脑学生本 不凡银【金属超薄本】 '
+         'i3-7130/4G/256G固态 定制',
+ 'price': '3899.00',
+ 'url': 'https://item.jd.com/24877362146.html'}
+{'comments': '1.2万+',
+ 'name': '戴尔（DELL） 金属超级本灵越5370 13.3英寸轻薄便携商务办公手提笔记本电脑学生本 不凡银【金属超薄本】 '
+         'i3-7130/8G/256G固态 定制',
+ 'price': '4099.00',
+ 'url': 'https://item.jd.com/24877362149.html'}
+{'comments': '1.2万+',
+ 'name': '戴尔（DELL） 金属超级本灵越5370 13.3英寸轻薄便携商务办公手提笔记本电脑学生本 不凡银【金属超薄本】 '
+         'i5-8250/4G/128G固态 标配',
+ 'price': '4299.00',
+ 'url': 'https://item.jd.com/24877362144.html'}
+{'comments': '4000+',
+ 'name': '华硕（ASUS）笔记本电脑超薄13.3英寸轻薄手提超极本RX310学生上网本手提 【热卖】I3-7100U/8G/128G 玫瑰金',
+ 'price': '3799.00',
+ 'url': 'https://item.jd.com/11266176224.html'}
+{'comments': '4700+',
+ 'name': '苹果（Apple） MacBook Pro13.3英寸 2018新款/2017款苹果笔记本电脑 '
+         '18款银色/512G/带bar/MR9V2CH/A',
+ 'price': '13868.00',
+ 'url': 'https://item.jd.com/30380068101.html'}
+---关闭数据库
